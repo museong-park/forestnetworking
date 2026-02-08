@@ -62,7 +62,6 @@ export default function Home() {
           <h2 className="mb-2 text-center text-xl font-bold text-foreground sm:text-2xl">
             언제, 어디서든 협업이 필요할 땐
           </h2>
-          <p className="mb-8 text-center text-muted">Contact</p>
           <ContactForm />
         </div>
       </section>

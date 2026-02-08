@@ -8,7 +8,6 @@ export default function ContactPage() {
           <h1 className="mb-4 text-2xl font-bold text-foreground sm:text-3xl">
             언제, 어디서든 협업이 필요할 땐
           </h1>
-          <p className="text-muted">Contact</p>
         </div>
       </section>
 
