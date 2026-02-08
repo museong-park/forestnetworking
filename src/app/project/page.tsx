@@ -83,6 +83,47 @@ const colorClasses: Record<string, string> = {
   stone: "border-emerald-200 bg-brand-muted/50",
 };
 
+/** 연도·월 순 전체 프로젝트 타임라인 (하단 리스트용) */
+const chronologicalProjects: { date: string; description: string }[] = [
+  { date: "2020. 03.", description: "한국관광공사 산학연관협력 지역관광 프로젝트 3Go_산촌Go, 감성Go, 맛Go" },
+  { date: "2020. 08.", description: "지역상생형 산림특화 사회적경제 모델 수립 1차 (한국임업진흥원)" },
+  { date: "2020. 10.", description: "골든포레스트페스티벌 운영" },
+  { date: "2020. 12.", description: "선도산림경영단지 6차산업모델연구 (춘천시)" },
+  { date: "2021. 03.", description: "지역순환형 임업을 위한 경영주체 현황 및 실태조사 (국립산림과학원)" }, 
+  { date: "2021. 03.", description: "지역상생형 산림특화 사회적경제 모델 수립 2차 (한국임업진흥원)" },
+  { date: "2021. 04.", description: "강원 어촌마을 현황 조사 (강원귀어귀촌지원센터)" },
+  { date: "2021. 04.", description: "귀산촌 스타트업(산림관광비즈니스) 교육기관 선정(한국임업진흥원)" },
+  { date: "2021. 04.", description: "문화자원 개발 및 활성화사업(36.5도시프로젝트)(원주시창의문화도시지원센터)" },
+  { date: "2021. 05.", description: "경북어촌특화지원센터 자원조사 및 DB구축" },
+  { date: "2021. 05.", description: "원주, 삼척 주민사업체의 사업화 관리(한국관광공사)" },
+  { date: "2021. 05.", description: "제12회 예비·초기관광벤처사업 추진(한국관광공사)" },
+  { date: "2021. 09.", description: "한국관광공사 농어촌상생기금활용 팸투어 프로그램 운영(대중소기업 농어업협력재단)" },
+  { date: "2022. 05.", description: "제13회 성장 관광벤처사업 추진(한국관광공사)" },
+  { date: "2022. 05.", description: "귀산촌인의 지리산둘레길 인식 실태조사(국립산림과학원)" },
+  { date: "2022. 07.", description: "등산, 트레킹 등 숲길 체험활동이 산촌경제와 탄소중립에 기여하는 효과 연구 (산림청)" },
+  { date: "2022. 07.", description: "평창홍보영상 제작 및 스마트 스크린 운영관리 대행용역(한국관광공사)" },
+  { date: "2022. 08.", description: "횡성 청일 선도산림경영단지 융복합 모델 (횡성군산림조합, 횡성군청)" },
+  { date: "2022. 09.", description: "한국관광공사 농어촌상생기금활용 팸투어 프로그램 운영(대·중소기업 농어업협력재단)" },
+  { date: "2022. 09.", description: "탄소중립 체험 및 캠페인(설악산 국립공원 친환경여행 캠페인) (한국관광공사)" },
+  { date: "2022. 09.", description: "2022 대한민국 독서대전 평가 용역(원주시평생교육원 시립중앙도서관)" },
+  { date: "2023. 03.", description: "인제군 진동계곡마을 활성화사업 주민역량강화 용역 (인제군농업기술센터)" },
+  { date: "2023. 03.", description: "여성농업인 영농여건 개선 교육 공모선정(농림수산식품교육문화정보원)/(원주, 영월)" },
+  { date: "2023. 05.", description: "인구소멸위기지역 찾아가는 청소년산림교육 용역 (산림청, 영월군 주천중학교)" },
+  { date: "2023. 05.", description: "시골언니 프로젝트 운영기관 (농림수산식품교육문화정보원)" },
+  { date: "2023. 07.", description: "국가숲길, 명품숲길 50 홍보 용역 (산림청)" },
+  { date: "2023. 09.", description: "둔내면 도시재생대학 운영 (횡성군)" }, 
+  { date: "2024. 02.", description: "목재문화체험장 타당성 조사 (원주시)" },
+  { date: "2024. 05.", description: "시골언니 프로젝트 운영기관 (농림수산식품교육문화정보원)" },
+  { date: "2025. 05.", description: "시골언니 프로젝트 운영 (농림수산식품교육문화정보원)" },
+  { date: "2025. 05.", description: "2024년 산촌활력 특화사업(2차년도 추가지원 양평, 횡성) 운영(한국임업진흥원)" },
+  { date: "2025. 06.", description: "직접생산확인증명 기업등록(한국중소벤처기업유통원)" },
+  { date: "2025. 06.", description: "인제 용대1리 마을회 야영장 체험 프로그램 개발, 국밥 레시피 개발" },
+  { date: "2025. 10.", description: "제3회 동화마을 수목원 가을축제 운영(원주시)" },
+  { date: "2025. 11.", description: "동서트레일 거점마을 연계 사업화 모델 연구(산림청)" },
+  { date: "2025. 11.", description: "공모전 수상작 교구 제작 및 배포(목재문화진흥회)" },
+  { date: "2025. 12.", description: "2025 산림복지 목재 인테리어 지원사업(목재문화진흥회)" },
+];
+
 export default function ProjectPage() {
   return (
     <main className="min-h-screen bg-background">
@@ -97,6 +138,7 @@ export default function ProjectPage() {
         </div>
       </section>
 
+      {/* 상단: 카테고리별 상세 프로젝트 */}
       <div className="px-4 py-12 sm:px-6">
         <div className="mx-auto max-w-4xl space-y-16">
           {categories.map((cat) => (
@@ -124,6 +166,34 @@ export default function ProjectPage() {
           ))}
         </div>
       </div>
+
+      {/* 하단: 연도·월 순 전체 프로젝트 리스트 */}
+      <section className="border-t border-border bg-surface px-4 py-16 sm:px-6">
+        <div className="mx-auto max-w-4xl">
+          <h2 className="mb-8 text-2xl font-bold text-brand sm:text-3xl">
+            Project
+          </h2>
+          <div className="overflow-hidden rounded-xl border border-border shadow-sm">
+            <ul className="divide-y divide-border">
+              {chronologicalProjects.map((item, i) => (
+                <li
+                  key={i}
+                  className={`flex gap-6 px-5 py-4 sm:px-6 sm:py-5 ${
+                    i % 2 === 0 ? "bg-surface" : "bg-stone-50"
+                  }`}
+                >
+                  <span className="shrink-0 text-sm font-medium text-muted sm:w-20 sm:text-base">
+                    {item.date}
+                  </span>
+                  <span className="min-w-0 flex-1 text-sm leading-relaxed text-foreground sm:text-base">
+                    {item.description}
+                  </span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      </section>
     </main>
   );
 }
