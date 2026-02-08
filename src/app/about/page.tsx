@@ -1,0 +1,229 @@
+import type { Metadata } from "next";
+import OurPathTimeline from "@/components/OurPathTimeline";
+
+export const metadata: Metadata = {
+  title: "About | (주)한국농산어촌네트워크",
+  description: "대표 인사말, 연혁, 인증서를 소개합니다.",
+};
+
+const history = [
+  {
+    year: "2020",
+    items: [
+      "3월: 창업기업등록",
+      "3월: 산학연 지역관광 프로젝트",
+      "8월: 산림특화 사회적경제 모델 수립",
+      "10월: 골든포레스트페스티벌 운영",
+      "12월: 선도산림경영단지 6차산업모델연구",
+    ],
+  },
+  {
+    year: "2021",
+    items: [
+      "4월: 강원어촌마을 현황조사",
+      "4월: 귀산촌 스타트업 교육기관 선정",
+    ],
+  },
+  {
+    year: "2022",
+    items: [
+      "4월: 전문교육기관 지정 (산림청)",
+      "5월: 관광벤처기업 선정",
+      "9월: 탄소중립체험캠페인 운영",
+      "12월: 사회적기업 인증",
+    ],
+  },
+  {
+    year: "2023",
+    items: [
+      "3월: 여성기업 지정",
+      "5월: 시골언니프로젝트 운영기관 선정(~25)",
+      "9월: 동화마을수목원 가을축제 운영 (~25)",
+    ],
+  },
+  {
+    year: "2024",
+    items: ["5월: 산촌활력특화사업(양평, 횡성)"],
+  },
+];
+
+/** "3월: 텍스트" → { month: 3, monthLabel: "3월", label, highlight } */
+function parseItem(
+  item: string,
+  options: { highlight?: "green" | "orange" } = {}
+): { month: number; monthLabel: string; label: string; highlight?: "green" | "orange" } {
+  const match = item.match(/^(\d{1,2})월:\s*(.+)$/);
+  if (!match) return { month: 1, monthLabel: "1월", label: item, ...options };
+  const month = parseInt(match[1], 10);
+  const monthLabel = `${month}월`;
+  return { month, monthLabel, label: match[2].trim(), ...options };
+}
+
+const highlightKeywords: Record<string, "green" | "orange"> = {
+  창업기업등록: "orange",
+  사회적기업: "green",
+  관광벤처: "green",
+  여성기업: "green",
+  시골언니: "green",
+};
+
+function getHighlight(label: string, year: string, index: number): "green" | "orange" | undefined {
+  if (year === "2020" && index === 0) return "orange";
+  for (const [key, type] of Object.entries(highlightKeywords)) {
+    if (label.includes(key)) return type;
+  }
+  return undefined;
+}
+
+type TimelineEvent = {
+  month: number;
+  monthLabel: string;
+  label: string;
+  highlight?: "green" | "orange";
+};
+
+function buildTimelineEvents(): { year: string; events: TimelineEvent[] }[] {
+  return history.map(({ year, items }) => ({
+    year,
+    events: items.map((item, i) => {
+      const parsed = parseItem(item);
+      const highlight = getHighlight(parsed.label, year, i);
+      return { ...parsed, highlight };
+    }),
+  }));
+}
+
+const timelineData = buildTimelineEvents();
+
+export default function AboutPage() {
+  return (
+    <main className="min-h-screen bg-background">
+      <section className="border-b border-border bg-brand-muted/50 px-4 py-16 sm:px-6">
+        <div className="mx-auto max-w-3xl">
+          <h1 className="mb-4 text-2xl font-bold text-foreground sm:text-3xl">
+            About
+          </h1>
+          <p className="text-muted">회사 소개와 우리의 경로를 소개합니다.</p>
+        </div>
+      </section>
+
+      {/* 대표 인사말 */}
+      <section className="bg-surface px-4 py-16 sm:px-6">
+        <div className="mx-auto max-w-3xl">
+          <h2 className="mb-8 text-xl font-bold text-foreground">
+            대표 인사말
+          </h2>
+          <div className="space-y-6 text-muted leading-relaxed">
+            <p>
+              우리는 자연과 자원이 주는 가치에 기반한 지속적인 삶의 방식을 찾고
+              주도함으로써, 새로운 방식의 지역 탐색과 확장의 변화를 만들어
+              냅니다.
+            </p>
+            <p>
+              (주)한국농산어촌네트워크는 사물의 이치를 끝까지 파고드는
+              &lsquo;격물치지(格物致知)&rsquo;를 실천합니다. 우리는 책상 위의
+              데이터가 아닌 현장의 틈새를 파고들어, 지역이 가진 진짜 문제와
+              기회를 식별하고 그에 맞는 실질적인 솔루션을 설계합니다.
+            </p>
+            <p className="rounded-lg border border-emerald-200 bg-brand-muted p-4 font-medium text-brand">
+              &ldquo;농사짓지 않아도 괜찮아&rdquo;
+            </p>
+            <p>
+              우리의 모토는 명확합니다. 농산어촌을 &lsquo;생산&rsquo;의 공간을
+              넘어 다양한 재능과 전문성이 지역에서 비즈니스로 발현되도록 돕습니다.
+              농사를 짓지 않더라도 지역의 구성원으로서 제 역할을 다하고 수익을
+              창출할 수 있는 구조를 만드는 것, 이것이 우리가 실행하는 다양성의
+              핵심입니다.
+            </p>
+            <p>
+              우리는 지역 생태계라는 거친 바다에서 개별 주체들이 어떻게
+              살아남아야 하는지 고민합니다. 작은 물고기들이 떼를 지어 고래처럼
+              움직이며 거대한 흐름을 만들어내듯, 우리는 지역의 자원과 사람을
+              전략적으로 엮습니다. 단순히 머무는 것에 그치지 않고, 서로가
+              서로의 생존을 뒷받침하는 단단한 네트워크를 구축하여 지역
+              비즈니스의 새로운 판을 짭니다.
+            </p>
+            <p>
+              (주)한국농산어촌네트워크는 지역의 본질을 꿰뚫는 통찰과 실행력으로
+              농산어촌의 새로운 미래를 증명하겠습니다.
+            </p>
+            <p className="font-bold text-brand">
+              우리의 걸음이 지역의 흐름이 됩니다.
+            </p>
+            <p className="pt-4 text-sm text-muted">
+              ㈜한국농산어촌네트워크 대표 김소민
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* 우리의 미션 / EXCATION */}
+      <section className="border-t border-border bg-brand-muted/40 px-4 py-16 sm:px-6">
+        <div className="mx-auto max-w-3xl text-center">
+          <p className="mb-2 text-sm font-medium uppercase tracking-widest text-brand">
+            우리의 미션
+          </p>
+          <h2 className="mb-8 text-2xl font-bold text-foreground sm:text-3xl">
+            Go Anywhere, Make Your Life
+          </h2>
+          <div className="space-y-6 rounded-2xl border border-emerald-200/80 bg-surface p-8 shadow-sm">
+            <p className="text-lg font-medium text-brand">歸 → Go</p>
+            <p className="text-muted">
+              돌아가는 곳이 아닌
+              <br />
+              <strong className="text-foreground">찾아가는 공간</strong>으로
+            </p>
+            <p className="text-xl font-bold text-brand">EXCATION</p>
+            <p className="text-sm text-muted">
+              Exploration(탐색) + Location(공간)의 합성어
+              <br />
+              탐색과 경험이 가득 찬 공간으로
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* 연혁 - 시각화 타임라인 (연도 호버 시 해당 연도 연혁 표시) */}
+      <section className="border-t border-border bg-stone-100 px-4 py-16 sm:px-6">
+        <div className="mx-auto max-w-4xl">
+          <h2 className="mb-2 text-xl font-bold text-foreground">
+            우리의 경로
+          </h2>
+          <p className="mb-10 text-muted">
+            우리는 지나온 경로의 확인을 통해 목적지를 더욱 확고히 합니다.
+          </p>
+          <OurPathTimeline data={timelineData} />
+        </div>
+      </section>
+
+      {/* 인증서 갤러리 */}
+      <section className="border-t border-border bg-background px-4 py-16 sm:px-6">
+        <div className="mx-auto max-w-3xl">
+          <h2 className="mb-8 text-xl font-bold text-foreground">
+            인증서 갤러리
+          </h2>
+          <p className="mb-8 text-muted">
+            사회적기업 인증서, 여성기업 확인서, 관광벤처 선정 확인증 등
+          </p>
+          <div className="grid gap-4 sm:grid-cols-2">
+            {[
+              "사회적기업 인증서",
+              "여성기업 확인서",
+              "관광벤처 선정 확인증",
+              "산림청 전문교육기관 지정",
+            ].map((label, i) => (
+              <div
+                key={i}
+                className="flex aspect-[4/3] items-center justify-center rounded-xl border-2 border-dashed border-border bg-stone-100 text-center text-sm text-muted"
+              >
+                {label}
+                <br />
+                (이미지 추가 예정)
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+    </main>
+  );
+}
