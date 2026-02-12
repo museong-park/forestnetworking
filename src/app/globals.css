@@ -29,3 +29,19 @@ body {
   color: var(--foreground);
   font-family: var(--font-sans);
 }
+
+/* 파트너사 로고 무한 스크롤 애니메이션 */
+@keyframes scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-scroll {
+  animation: scroll 30s linear infinite;
+  display: flex;
+  width: fit-content;
+}

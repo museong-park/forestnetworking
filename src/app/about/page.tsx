@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import OurPathTimeline from "@/components/OurPathTimeline";
 
 export const metadata: Metadata = {
@@ -98,12 +99,104 @@ const timelineData = buildTimelineEvents();
 export default function AboutPage() {
   return (
     <main className="min-h-screen bg-background">
+      {/* About 헤더 */}
       <section className="border-b border-border bg-brand-muted/50 px-4 py-16 sm:px-6">
         <div className="mx-auto max-w-3xl">
           <h1 className="mb-4 text-2xl font-bold text-foreground sm:text-3xl">
             About
           </h1>
           <p className="text-muted">회사 소개와 우리의 경로를 소개합니다.</p>
+        </div>
+      </section>
+
+      {/* 우리의 미션 - 가장 상단 */}
+      <section className="border-b border-border bg-surface px-4 py-16 sm:px-6">
+        <div className="mx-auto max-w-3xl">
+          <p className="mb-2 text-sm font-medium uppercase tracking-widest text-brand">
+            우리의 미션
+          </p>
+          <h2 className="text-2xl font-bold text-foreground sm:text-3xl md:text-4xl">
+            Go Anywhere, Make Your Life
+          </h2>
+        </div>
+      </section>
+
+      {/* 歸 → Go: 돌아가는 곳이 아닌 찾아가는 공간으로 */}
+      <section className="border-b border-border bg-stone-50 px-4 py-16 sm:px-6">
+        <div className="mx-auto max-w-5xl">
+          <div className="grid gap-8 lg:grid-cols-2 lg:items-center">
+            {/* 이미지 */}
+            <div className="order-2 lg:order-1">
+              <div className="relative aspect-square overflow-hidden rounded-xl shadow-lg">
+                <Image
+                  src="/2.ABOUT/main_center.png"
+                  alt="Go농 Go촌"
+                  fill
+                  className="object-cover"
+                />
+              </div>
+            </div>
+            {/* 텍스트 */}
+            <div className="order-1 space-y-4 lg:order-2">
+              <p className="text-2xl font-bold text-brand sm:text-3xl">
+                歸 → Go
+              </p>
+              <p className="text-lg leading-relaxed text-muted sm:text-xl">
+                돌아가는 곳이 아닌
+                <br />
+                <strong className="text-foreground">찾아가는 공간</strong>으로
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* EXCATION: 탐색과 경험이 가득 찬 공간으로 */}
+      <section className="relative border-b border-border overflow-hidden px-4 py-16 sm:px-6">
+        {/* 배경 이미지 */}
+        <div className="absolute inset-0">
+          <Image
+            src="/2.ABOUT/130667122.1.jpg"
+            alt="탐색과 경험"
+            fill
+            className="object-cover"
+          />
+          {/* 어두운 오버레이 */}
+          <div className="absolute inset-0 bg-black/40" />
+        </div>
+
+        {/* 콘텐츠 */}
+        <div className="relative z-10 mx-auto max-w-5xl">
+          <div className="grid gap-8 lg:grid-cols-2 lg:items-center">
+            {/* 왼쪽: EXCATION 텍스트 */}
+            <div className="space-y-4 text-white">
+              <h2 className="text-3xl font-bold sm:text-4xl md:text-5xl">
+                EXCATION
+              </h2>
+              <p className="text-lg leading-relaxed sm:text-xl">
+                탐색과 경험이 가득 찬 공간으로
+              </p>
+            </div>
+
+            {/* 오른쪽: EXPLORATION + LOCATION = EXCATION */}
+            <div className="flex flex-col items-center justify-center space-y-2 rounded-xl bg-white/10 p-8 backdrop-blur-sm sm:space-y-4">
+              <p className="text-2xl font-bold text-white sm:text-3xl md:text-4xl">
+                EXPLORATION
+              </p>
+              <p className="text-3xl font-bold text-white sm:text-4xl md:text-5xl">
+                +
+              </p>
+              <p className="text-2xl font-bold text-white sm:text-3xl md:text-4xl">
+                LOCATION
+              </p>
+              <p className="text-3xl font-bold text-white sm:text-4xl md:text-5xl">
+                =
+              </p>
+              <p className="text-3xl font-bold text-white sm:text-4xl md:text-5xl">
+                EXCATION
+              </p>
+            </div>
+          </div>
         </div>
       </section>
 
@@ -152,32 +245,6 @@ export default function AboutPage() {
             </p>
             <p className="pt-4 text-sm text-muted">
               ㈜한국농산어촌네트워크 대표 김소민
-            </p>
-          </div>
-        </div>
-      </section>
-
-      {/* 우리의 미션 / EXCATION */}
-      <section className="border-t border-border bg-brand-muted/40 px-4 py-16 sm:px-6">
-        <div className="mx-auto max-w-3xl text-center">
-          <p className="mb-2 text-sm font-medium uppercase tracking-widest text-brand">
-            우리의 미션
-          </p>
-          <h2 className="mb-8 text-2xl font-bold text-foreground sm:text-3xl">
-            Go Anywhere, Make Your Life
-          </h2>
-          <div className="space-y-6 rounded-2xl border border-emerald-200/80 bg-surface p-8 shadow-sm">
-            <p className="text-lg font-medium text-brand">歸 → Go</p>
-            <p className="text-muted">
-              돌아가는 곳이 아닌
-              <br />
-              <strong className="text-foreground">찾아가는 공간</strong>으로
-            </p>
-            <p className="text-xl font-bold text-brand">EXCATION</p>
-            <p className="text-sm text-muted">
-              Exploration(탐색) + Location(공간)의 합성어
-              <br />
-              탐색과 경험이 가득 찬 공간으로
             </p>
           </div>
         </div>

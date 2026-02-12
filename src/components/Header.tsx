@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { useState } from "react";
 
 const navItems = [
@@ -17,11 +18,15 @@ export default function Header() {
   return (
     <header className="sticky top-0 z-50 border-b border-border bg-surface/95 backdrop-blur supports-backdrop-filter:bg-surface/90">
       <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-4 sm:px-6">
-        <Link
-          href="/"
-          className="text-lg font-bold tracking-tight text-brand sm:text-xl"
-        >
-          한국농산어촌네트워크
+        <Link href="/" className="flex items-center">
+          <Image
+            src="/logo_no_bg.png"
+            alt="한국농산어촌네트워크"
+            width={300}
+            height={60}
+            className="h-12 w-auto sm:h-14"
+            priority
+          />
         </Link>
 
         <nav className="hidden items-center gap-8 md:flex">
