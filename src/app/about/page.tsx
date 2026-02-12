@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Image from "next/image";
+import CertGallery from "@/components/CertGallery";
 import OurPathTimeline from "@/components/OurPathTimeline";
 
 export const metadata: Metadata = {
@@ -99,30 +100,36 @@ const timelineData = buildTimelineEvents();
 export default function AboutPage() {
   return (
     <main className="min-h-screen bg-background">
-      {/* About 헤더 */}
-      <section className="border-b border-border bg-brand-muted/50 px-4 py-16 sm:px-6">
-        <div className="mx-auto max-w-3xl">
-          <h1 className="mb-4 text-2xl font-bold text-foreground sm:text-3xl">
-            About
-          </h1>
-          <p className="text-muted">회사 소개와 우리의 경로를 소개합니다.</p>
+      {/* 우리의 미션 - 히어로 섹션 */}
+      <section className="relative flex min-h-[65vh] flex-col items-center justify-center overflow-hidden border-b border-border px-4 py-28 text-center sm:min-h-[70vh] sm:py-36">
+        {/* 배경 이미지 */}
+        <div className="absolute inset-0">
+          {/* 어두운 그라데이션 오버레이 */}
+          <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/50 to-black/70" />
+          {/* 브랜드 컬러 오버레이 */}
+          <div className="absolute inset-0 bg-gradient-to-b from-brand/20 via-transparent to-brand/30" />
         </div>
-      </section>
 
-      {/* 우리의 미션 - 가장 상단 */}
-      <section className="border-b border-border bg-surface px-4 py-16 sm:px-6">
-        <div className="mx-auto max-w-3xl">
-          <p className="mb-2 text-sm font-medium uppercase tracking-widest text-brand">
+        {/* 콘텐츠 */}
+        <div className="relative z-10 mx-auto max-w-4xl">
+          <p className="mb-4 text-sm font-medium uppercase tracking-widest text-white/90 sm:text-base">
             우리의 미션
           </p>
-          <h2 className="text-2xl font-bold text-foreground sm:text-3xl md:text-4xl">
-            Go Anywhere, Make Your Life
-          </h2>
+          <h1 className="mb-6 text-4xl font-bold leading-tight text-white drop-shadow-lg sm:text-5xl md:text-6xl lg:text-7xl">
+            Go Anywhere,
+            <br />
+            Make Your Life
+          </h1>
+          <p className="mx-auto max-w-2xl text-lg leading-relaxed text-white/95 sm:text-xl">
+            자연과 자원이 있는 어느 곳에서든
+            <br />
+            우리의 삶이 지속 가능하도록 함께합니다
+          </p>
         </div>
       </section>
 
       {/* 歸 → Go: 돌아가는 곳이 아닌 찾아가는 공간으로 */}
-      <section className="border-b border-border bg-stone-50 px-4 py-16 sm:px-6">
+      <section className="border-b border-border bg-stone-50 px-4 py-20 sm:px-6 sm:py-24">
         <div className="mx-auto max-w-5xl">
           <div className="grid gap-8 lg:grid-cols-2 lg:items-center">
             {/* 이미지 */}
@@ -152,7 +159,7 @@ export default function AboutPage() {
       </section>
 
       {/* EXCATION: 탐색과 경험이 가득 찬 공간으로 */}
-      <section className="relative border-b border-border overflow-hidden px-4 py-16 sm:px-6">
+      <section className="relative overflow-hidden border-b border-border px-4 py-20 sm:px-6 sm:py-24">
         {/* 배경 이미지 */}
         <div className="absolute inset-0">
           <Image
@@ -179,7 +186,7 @@ export default function AboutPage() {
             </div>
 
             {/* 오른쪽: EXPLORATION + LOCATION = EXCATION */}
-            <div className="flex flex-col items-center justify-center space-y-2 rounded-xl bg-white/10 p-8 backdrop-blur-sm sm:space-y-4">
+            <div className="flex flex-col items-center justify-center space-y-2 rounded-2xl border border-white/20 bg-white/10 p-8 backdrop-blur-md sm:space-y-4 sm:p-10">
               <p className="text-2xl font-bold text-white sm:text-3xl md:text-4xl">
                 EXPLORATION
               </p>
@@ -200,12 +207,72 @@ export default function AboutPage() {
         </div>
       </section>
 
+      {/* about_1: 우리는 자연과 자원이 주는 가치에 기반한 */}
+      <section className="relative overflow-hidden border-b border-border">
+        <div className="flex flex-col">
+          <div className="relative aspect-[16/10] w-full min-h-[40vh]">
+            <Image
+              src="/2.ABOUT/about_1.png"
+              alt="자연과 자원"
+              fill
+              className="object-cover"
+            />
+          </div>
+          <div className="flex flex-col justify-center bg-stone-100 px-6 py-12 sm:px-10 sm:py-16">
+            <p className="mx-auto max-w-3xl text-2xl font-bold leading-relaxed text-foreground sm:text-3xl md:text-4xl">
+              우리는 자연과 자원이 주는 가치에 기반한
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* about_2: 지속적인 삶의 방식을 찾고 주도함으로써 */}
+      <section className="relative overflow-hidden border-b border-border">
+        <div className="flex flex-col">
+          <div className="relative aspect-[16/10] w-full min-h-[40vh]">
+            <Image
+              src="/2.ABOUT/about_2.png"
+              alt="지속적인 삶의 방식"
+              fill
+              className="object-cover"
+            />
+          </div>
+          <div className="flex flex-col justify-center bg-stone-100 px-6 py-12 sm:px-10 sm:py-16">
+            <p className="mx-auto max-w-3xl text-2xl font-bold leading-relaxed text-foreground sm:text-3xl md:text-4xl">
+              지속적인 삶의 방식을 찾고 주도함으로써
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* about_3: 새로운 방식의 지역 탐색과 확장의 변화를 만들어 냅니다. */}
+      <section className="relative overflow-hidden border-b border-border">
+        <div className="flex flex-col">
+          <div className="relative aspect-[16/10] w-full min-h-[40vh]">
+            <Image
+              src="/2.ABOUT/about_3.png"
+              alt="지역 탐색과 확장"
+              fill
+              className="object-cover"
+            />
+          </div>
+          <div className="flex flex-col justify-center bg-stone-100 px-6 py-12 sm:px-10 sm:py-16">
+            <p className="mx-auto max-w-3xl text-2xl font-bold leading-relaxed text-foreground sm:text-3xl md:text-4xl">
+              새로운 방식의 지역 탐색과 확장의 변화를 만들어 냅니다.
+            </p>
+          </div>
+        </div>
+      </section>
+
       {/* 대표 인사말 */}
-      <section className="bg-surface px-4 py-16 sm:px-6">
+      <section className="bg-surface px-4 py-20 sm:px-6 sm:py-24">
         <div className="mx-auto max-w-3xl">
-          <h2 className="mb-8 text-xl font-bold text-foreground">
+          <h2 className="mb-2 text-xl font-bold text-foreground">
             대표 인사말
           </h2>
+          <p className="mb-10 text-muted">
+            자연과 지역을 바탕으로 한 우리의 방향을 말씀드립니다.
+          </p>
           <div className="space-y-6 text-muted leading-relaxed">
             <p>
               우리는 자연과 자원이 주는 가치에 기반한 지속적인 삶의 방식을 찾고
@@ -218,7 +285,7 @@ export default function AboutPage() {
               데이터가 아닌 현장의 틈새를 파고들어, 지역이 가진 진짜 문제와
               기회를 식별하고 그에 맞는 실질적인 솔루션을 설계합니다.
             </p>
-            <p className="rounded-lg border border-emerald-200 bg-brand-muted p-4 font-medium text-brand">
+            <p className="border-l-4 border-brand bg-brand-muted/50 py-3 pl-5 pr-4 font-medium text-brand">
               &ldquo;농사짓지 않아도 괜찮아&rdquo;
             </p>
             <p>
@@ -251,44 +318,28 @@ export default function AboutPage() {
       </section>
 
       {/* 연혁 - 시각화 타임라인 (연도 호버 시 해당 연도 연혁 표시) */}
-      <section className="border-t border-border bg-stone-100 px-4 py-16 sm:px-6">
+      <section className="border-t border-border bg-stone-100 px-4 py-20 sm:px-6 sm:py-24">
         <div className="mx-auto max-w-4xl">
           <h2 className="mb-2 text-xl font-bold text-foreground">
             우리의 경로
           </h2>
-          <p className="mb-10 text-muted">
+          <p className="mb-12 text-muted">
             우리는 지나온 경로의 확인을 통해 목적지를 더욱 확고히 합니다.
           </p>
           <OurPathTimeline data={timelineData} />
         </div>
       </section>
 
-      {/* 인증서 갤러리 */}
-      <section className="border-t border-border bg-background px-4 py-16 sm:px-6">
-        <div className="mx-auto max-w-3xl">
-          <h2 className="mb-8 text-xl font-bold text-foreground">
-            인증서 갤러리
+      {/* 인증서 */}
+      <section className="border-t border-border bg-background px-4 py-20 sm:px-6 sm:py-24">
+        <div className="mx-auto max-w-4xl">
+          <h2 className="mb-2 text-xl font-bold text-foreground">
+            인증서
           </h2>
-          <p className="mb-8 text-muted">
-            사회적기업 인증서, 여성기업 확인서, 관광벤처 선정 확인증 등
+          <p className="mb-10 text-muted">
+            우리가 받은 인증입니다.
           </p>
-          <div className="grid gap-4 sm:grid-cols-2">
-            {[
-              "사회적기업 인증서",
-              "여성기업 확인서",
-              "관광벤처 선정 확인증",
-              "산림청 전문교육기관 지정",
-            ].map((label, i) => (
-              <div
-                key={i}
-                className="flex aspect-[4/3] items-center justify-center rounded-xl border-2 border-dashed border-border bg-stone-100 text-center text-sm text-muted"
-              >
-                {label}
-                <br />
-                (이미지 추가 예정)
-              </div>
-            ))}
-          </div>
+          <CertGallery />
         </div>
       </section>
     </main>
