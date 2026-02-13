@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 
 export const metadata: Metadata = {
   title: "Project | (주)한국농산어촌네트워크",
@@ -15,10 +16,12 @@ const categories = [
       {
         name: "시골언니프로젝트 (2025 1기: 08.18~23 / 2기: 09.08~13)",
         desc: "귀농·귀촌에 관심 있는 20~40대 여성을 대상으로 새로운 지역(원주)에서 이주·정주의 가능성을 경험하고, 스스로 설계해 볼 수 있도록 다양한 탐색·체험을 제공. 참가자의 자연스럽고 적극적인 귀농·귀촌 경험이 실제 이주·정주의 성과로 이어지는 지역 탐색·교육 프로그램 기획 및 운영.",
+        images: [{ src: "/4.프로젝트/exploration_1.JPG", alt: "탐색 경험 – 마을·공동체 체험" }, { src: "/4.프로젝트/exploration_2.JPG", alt: "탐색 경험 – 핸즈온 워크숍" }],
       },
       {
         name: "BETTER里 인구감소지역 관광인구 증대 사업",
         desc: "가평 조항마을을 중심으로 지역이 보유한 '사람'과 '삶의 방식'에 집중하고 콘텐츠화하여 방문객이 능동적으로 탐색하고 관계를 맺는 '마을 탐색형 프로그램 Excation' 설계 및 도입. 단순체험·원격근무에서 이주·정착 경험, 설계 및 탐색으로 확장하여 관계인구 확장 거점화 모델 구현.",
+        images: [],
       },
     ],
   },
@@ -31,14 +34,19 @@ const categories = [
       {
         name: "동화마을수목원 가을축제 (2025.10.25)",
         desc: "체험·교육·놀이·공연 등 온가족이 함께 즐길 수 있는 프로그램을 통해 산림문화복지 서비스를 제공하고 산림의 공익적 가치를 공유하는 '2025 동화마을수목원 가을축제' 용역 수행.",
+        images: [{ src: "/4.프로젝트/value_1.JPG", alt: "동화마을수목원 가을축제 – 가족 체험 활동" }],
       },
       {
         name: "영월 녹전중학교 청소년 푸드아트테라피 (12.24)",
         desc: "학생, 가족, 교원이 함께 놀이·교육·문화·예술·상담·치유를 통합하는 새로운 상담기법인 푸드아트테라피를 통해 소통 증진과 새로운 식문화 형성, 이를 통해 건전한 가정·학교 문화를 조성하는 융합수업과정 기획 및 운영.",
+        images: [ {
+          src: "/4.프로젝트/value_2.jpg", alt: "영월 녹전중학교 청소년 푸드아트테라피"
+        }], // 이미지 없음 (원하면 나중에 추가)
       },
       {
         name: "산촌활력특화사업 횡성 (2차년도)",
         desc: "농산어촌 지역 특성에 맞는 예방·치유 중심의 건강관리를 실현하고, 방문진료·재택의료 중심의 보편의료 서비스를 위한 산촌형 서비스 '의료복지사회적협동조합' 설립 추진.",
+        images: [{ src: "/4.프로젝트/value_3.jpg", alt: "의료복지사회적협동조합 설립 발기인대회" }],
       },
     ],
   },
@@ -51,14 +59,21 @@ const categories = [
       {
         name: "산촌활력특화사업 '가평 조항마을'",
         desc: "마을이 품고 있는 자원인 국유림 '화백숲'을 활용한 다양한 체험을 바탕으로 지역을 탐색하고, 산촌생활을 경험할 수 있도록 프로그램 기획. 국유림을 활용한 지속가능한 사업화를 위한 '국유림상생포럼' 개최. 자원 활용과 이에 기반한 다양한 사업화를 통한 관계인구 확장, 지역 탐색 프로그램 개발 용역 수행.",
+        images: [{ src: "/4.프로젝트/sustainability_1.jpg", alt: "가평 조항마을 – 국유림 화백숲 체험" }],
       },
       {
         name: "산촌활력특화사업 '여주 주어리마을'",
         desc: "주변 관광자원인 양자산과 마을 주요 시설인 해독센터를 연계하는 사업 개발을 통해 마을 주민의 혜택은 물론 방문객 유치 및 방문자 대상 제품(능이버섯차) 기획 및 출시를 통해 지속적으로 수익사업을 전개할 수 있는 순환사업모델 개발 용역 수행.",
+        images: [ {
+          src: "/4.프로젝트/sustainability_2.jpg", alt: "여주 주어리마을 – 지역 연계 사업"
+        }, {
+          src: "/4.프로젝트/sustainability_3.jpg", alt: "여주 주어리마을 – 지역 연계 사업"
+        }],
       },
       {
         name: "산촌활력특화사업 '양평 수미마을' (2차년도)",
         desc: "청년 임업후계자 교육을 통해 예비 청년농업인들의 임업 유입을 유도하고 정착 성과를 창출. 청년 임업인의 취·창업에 특화된 산촌모델 제시, 임산물 가공기반 체계 수립·강화로 신제품 개발 능력과 생산력 향상, 마을 공장의 안정적인 가동률로 지속가능한 산촌활력 모델 개발 및 완성.",
+        images: [{ src: "/4.프로젝트/sustainability_4.jpg", alt: "양평 수미마을 – 청년 임업·가공 기반" }],
       },
     ],
   },
@@ -71,16 +86,29 @@ const categories = [
       {
         name: "산불피해목 기반 브랜드 <온림> 런칭 & 제품 개발",
         desc: "산불피해목의 활용 가치에 기반한 브랜드 <온림> 기획·런칭. 지역별 관광자원(산)과 연계를 통한 지속 운영이 가능한 굿즈 시리즈 '다다름'과 숲에 기반해 산림자원(산불피해목)의 사회적·교육적 가치를 공유하는 목재 교구 시리즈 '머무름' 개발. 단순 자원 활용을 넘어 순환, 재생, 생태계복원의 가치를 전달.",
+        images: [{ src: "/4.프로젝트/regeneration_1.jpg", alt: "브랜드 온림 – 산불피해목 활용 제품" }],
       },
     ],
   },
 ];
 
-const colorClasses: Record<string, string> = {
-  emerald: "border-emerald-200 bg-brand-muted/50",
-  amber: "border-emerald-200 bg-brand-muted/50",
-  teal: "border-emerald-200 bg-brand-muted/50",
-  stone: "border-emerald-200 bg-brand-muted/50",
+const colorClasses: Record<string, { card: string; accent: string }> = {
+  emerald: {
+    card: "border-emerald-200/80 bg-linear-to-b from-emerald-50/80 to-background shadow-sm",
+    accent: "bg-emerald-500",
+  },
+  amber: {
+    card: "border-amber-200/80 bg-linear-to-b from-amber-50/60 to-background shadow-sm",
+    accent: "bg-amber-500",
+  },
+  teal: {
+    card: "border-teal-200/80 bg-linear-to-b from-teal-50/60 to-background shadow-sm",
+    accent: "bg-teal-500",
+  },
+  stone: {
+    card: "border-stone-200/80 bg-linear-to-b from-stone-50/80 to-background shadow-sm",
+    accent: "bg-stone-600",
+  },
 };
 
 /** 연도·월 순 전체 프로젝트 타임라인 (하단 리스트용) */
@@ -127,65 +155,160 @@ const chronologicalProjects: { date: string; description: string }[] = [
 export default function ProjectPage() {
   return (
     <main className="min-h-screen bg-background">
-      <section className="border-b border-border bg-brand-muted/50 px-4 py-16 sm:px-6">
-        <div className="mx-auto max-w-3xl text-center">
-          <h1 className="mb-4 text-2xl font-bold text-foreground sm:text-3xl">
+      {/* Hero - 데스크톱에서도 여유 있게 */}
+      <section className="relative flex min-h-[52vh] flex-col items-center justify-center overflow-hidden px-4 py-28 text-center sm:min-h-[58vh] lg:px-8">
+        <div className="absolute inset-0 bg-linear-to-br from-brand via-brand to-brand-hover" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_50%_at_50%_0%,rgba(255,255,255,0.18),transparent_50%)]" />
+        <div className="absolute bottom-0 left-0 right-0 h-24 bg-linear-to-t from-background to-transparent" />
+        <div className="relative z-10 mx-auto w-full max-w-3xl lg:max-w-5xl">
+          <p className="mb-2 text-sm font-medium uppercase tracking-[0.2em] text-white/80">
+            Our Work
+          </p>
+          <h1 className="mb-5 text-4xl font-bold leading-tight text-white drop-shadow-md sm:text-5xl md:text-6xl lg:text-6xl xl:text-7xl">
             Project 2025
           </h1>
-          <p className="text-lg text-muted">
+          <p className="text-lg font-medium text-white/95 sm:text-xl lg:text-2xl">
             &lsquo;Go농, Go촌&rsquo;을 향해 쉼 없이 나아갑니다.
           </p>
+          <div className="mt-6 flex flex-wrap justify-center gap-x-6 gap-y-1 text-sm text-white/85 sm:text-base lg:text-lg">
+            <span>탐색 경험</span>
+            <span className="text-white/50">·</span>
+            <span>가치 향상</span>
+            <span className="text-white/50">·</span>
+            <span>지속 기반</span>
+            <span className="text-white/50">·</span>
+            <span>자원 재생</span>
+          </div>
         </div>
       </section>
 
-      {/* 상단: 카테고리별 상세 프로젝트 */}
-      <div className="px-4 py-12 sm:px-6">
-        <div className="mx-auto max-w-4xl space-y-16">
+      {/* 카테고리별 상세 프로젝트 - 데스크톱에서 넓은 단일 컬럼 */}
+      <div className="px-4 py-16 sm:px-6 sm:py-20 lg:px-10 xl:px-12">
+        <div className="mx-auto w-full max-w-4xl md:max-w-5xl lg:max-w-6xl xl:max-w-7xl space-y-20 lg:space-y-24">
           {categories.map((cat) => (
             <section
               key={cat.id}
-              className={`rounded-2xl border p-6 sm:p-8 ${colorClasses[cat.color]}`}
+              className={`rounded-2xl border-2 p-6 sm:p-10 lg:p-12 xl:p-14 ${colorClasses[cat.color].card}`}
             >
-              <h2 className="mb-2 text-xl font-bold text-foreground">
-                {cat.title}
-              </h2>
-              <p className="mb-8 text-muted">{cat.tagline}</p>
-              <ul className="space-y-8">
-                {cat.projects.map((proj, i) => (
-                  <li key={i} className="border-b border-border pb-8 last:border-0 last:pb-0">
-                    <h3 className="mb-2 font-semibold text-foreground">
-                      {proj.name}
-                    </h3>
-                    <p className="text-sm leading-relaxed text-muted">
-                      {proj.desc}
-                    </p>
-                  </li>
-                ))}
+              <div className="mb-8 flex items-start gap-4 lg:mb-10">
+                <span
+                  className={`mt-1.5 h-1 w-12 shrink-0 rounded-full ${colorClasses[cat.color].accent} sm:h-1.5 sm:w-14 lg:w-16`}
+                  aria-hidden
+                />
+                <div className="min-w-0 flex-1">
+                  <h2 className="text-xl font-bold text-foreground sm:text-2xl lg:text-3xl">
+                    {cat.title}
+                  </h2>
+                  <p className="mt-2 text-muted leading-relaxed sm:text-base lg:max-w-4xl lg:text-lg">
+                    {cat.tagline}
+                  </p>
+                </div>
+              </div>
+              <ul className="space-y-12 lg:space-y-16">
+                {cat.projects.map((proj, i) => {
+                  const images =
+                    "images" in proj && Array.isArray(proj.images) ? proj.images : [];
+                  const hasImages = images.length > 0;
+                  const imageOnRight = hasImages && i % 2 === 1;
+                  const singleImage = images.length === 1;
+                  return (
+                    <li
+                      key={i}
+                      className="border-b border-border/80 pb-12 last:border-0 last:pb-0 lg:pb-16 lg:last:pb-0"
+                    >
+                      <div
+                        className={
+                          hasImages
+                            ? "grid grid-cols-1 gap-6 sm:grid-cols-[1fr_1.25fr] sm:gap-10 lg:grid-cols-[1.1fr_1.5fr] lg:gap-12 xl:gap-14"
+                            : ""
+                        }
+                      >
+                        {hasImages && (
+                          <div
+                            className={`flex flex-col gap-3 sm:min-h-0 ${
+                              imageOnRight ? "sm:col-start-2 sm:row-start-1" : ""
+                            }`}
+                          >
+                            {singleImage ? (
+                              <div className="relative aspect-4/3 overflow-hidden rounded-xl border border-border/60 bg-stone-100 shadow-md lg:rounded-2xl">
+                                <Image
+                                  src={images[0].src}
+                                  alt={images[0].alt}
+                                  fill
+                                  className="object-cover transition-transform duration-300 hover:scale-[1.02]"
+                                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 45vw, 38vw"
+                                />
+                              </div>
+                            ) : (
+                              <div
+                                className={`grid gap-3 lg:gap-4 ${
+                                  images.length === 2
+                                    ? "grid-cols-2"
+                                    : "grid-cols-2 lg:grid-cols-3"
+                                }`}
+                              >
+                                {images.map((img, j) => (
+                                  <div
+                                    key={j}
+                                    className="relative aspect-4/3 overflow-hidden rounded-xl border border-border/60 bg-stone-100 shadow-md lg:rounded-2xl"
+                                  >
+                                    <Image
+                                      src={img.src}
+                                      alt={img.alt}
+                                      fill
+                                      className="object-cover transition-transform duration-300 hover:scale-[1.02]"
+                                      sizes="(max-width: 640px) 50vw, (max-width: 1024px) 22vw, 18vw"
+                                    />
+                                  </div>
+                                ))}
+                              </div>
+                            )}
+                          </div>
+                        )}
+                        <div
+                          className={`min-w-0 ${imageOnRight ? "sm:col-start-1 sm:row-start-1" : ""}`}
+                        >
+                          <h3 className="mb-3 text-base font-semibold leading-snug text-foreground sm:text-lg lg:text-xl lg:mb-4">
+                            {proj.name}
+                          </h3>
+                          <p className="text-sm leading-relaxed text-muted sm:text-[15px] lg:max-w-3xl lg:text-base lg:leading-relaxed">
+                            {proj.desc}
+                          </p>
+                        </div>
+                      </div>
+                    </li>
+                  );
+                })}
               </ul>
             </section>
           ))}
         </div>
       </div>
 
-      {/* 하단: 연도·월 순 전체 프로젝트 리스트 */}
-      <section className="border-t border-border bg-surface px-4 py-16 sm:px-6">
-        <div className="mx-auto max-w-4xl">
-          <h2 className="mb-8 text-2xl font-bold text-brand sm:text-3xl">
-            Project
-          </h2>
-          <div className="overflow-hidden rounded-xl border border-border shadow-sm">
+      {/* 연도·월 순 전체 프로젝트 타임라인 - 데스크톱에서 넓게 */}
+      <section className="border-t border-border bg-linear-to-b from-surface to-background px-4 py-20 sm:px-6 sm:py-24 lg:px-10 xl:px-12">
+        <div className="mx-auto w-full max-w-4xl md:max-w-5xl lg:max-w-6xl xl:max-w-7xl">
+          <div className="mb-10 text-center sm:mb-12 lg:mb-14">
+            <p className="text-sm font-medium uppercase tracking-widest text-brand">
+              Timeline
+            </p>
+            <h2 className="mt-2 text-2xl font-bold text-foreground sm:text-3xl lg:text-4xl">
+              Project History
+            </h2>
+          </div>
+          <div className="overflow-hidden rounded-2xl border-2 border-border bg-surface shadow-sm lg:rounded-3xl">
             <ul className="divide-y divide-border">
               {chronologicalProjects.map((item, i) => (
                 <li
                   key={i}
-                  className={`flex gap-6 px-5 py-4 sm:px-6 sm:py-5 ${
-                    i % 2 === 0 ? "bg-surface" : "bg-stone-50"
+                  className={`flex gap-6 px-5 py-4 transition-colors hover:bg-stone-50/80 sm:px-6 sm:py-5 lg:px-8 lg:py-6 ${
+                    i % 2 === 0 ? "bg-surface" : "bg-stone-50/50"
                   }`}
                 >
-                  <span className="shrink-0 text-sm font-medium text-muted sm:w-20 sm:text-base">
+                  <span className="shrink-0 text-sm font-semibold text-brand sm:w-24 sm:text-base lg:w-28 lg:text-lg">
                     {item.date}
                   </span>
-                  <span className="min-w-0 flex-1 text-sm leading-relaxed text-foreground sm:text-base">
+                  <span className="min-w-0 flex-1 text-sm leading-relaxed text-foreground sm:text-base lg:text-lg lg:leading-relaxed">
                     {item.description}
                   </span>
                 </li>
