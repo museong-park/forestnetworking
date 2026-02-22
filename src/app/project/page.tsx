@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Image from "next/image";
+import FadeIn from "@/components/FadeIn";
 
 export const metadata: Metadata = {
   title: "Project | (주)한국농산어촌네트워크",
@@ -39,7 +40,7 @@ const categories = [
       {
         name: "영월 녹전중학교 청소년 푸드아트테라피 (12.24)",
         desc: "학생, 가족, 교원이 함께 놀이·교육·문화·예술·상담·치유를 통합하는 새로운 상담기법인 푸드아트테라피를 통해 소통 증진과 새로운 식문화 형성, 이를 통해 건전한 가정·학교 문화를 조성하는 융합수업과정 기획 및 운영.",
-        images: [ {
+        images: [{
           src: "/4.프로젝트/value_2.jpg", alt: "영월 녹전중학교 청소년 푸드아트테라피"
         }], // 이미지 없음 (원하면 나중에 추가)
       },
@@ -64,7 +65,7 @@ const categories = [
       {
         name: "산촌활력특화사업 '여주 주어리마을'",
         desc: "주변 관광자원인 양자산과 마을 주요 시설인 해독센터를 연계하는 사업 개발을 통해 마을 주민의 혜택은 물론 방문객 유치 및 방문자 대상 제품(능이버섯차) 기획 및 출시를 통해 지속적으로 수익사업을 전개할 수 있는 순환사업모델 개발 용역 수행.",
-        images: [ {
+        images: [{
           src: "/4.프로젝트/sustainability_2.jpg", alt: "여주 주어리마을 – 지역 연계 사업"
         }, {
           src: "/4.프로젝트/sustainability_3.jpg", alt: "여주 주어리마을 – 지역 연계 사업"
@@ -117,7 +118,7 @@ const chronologicalProjects: { date: string; description: string }[] = [
   { date: "2020. 08.", description: "지역상생형 산림특화 사회적경제 모델 수립 1차 (한국임업진흥원)" },
   { date: "2020. 10.", description: "골든포레스트페스티벌 운영" },
   { date: "2020. 12.", description: "선도산림경영단지 6차산업모델연구 (춘천시)" },
-  { date: "2021. 03.", description: "지역순환형 임업을 위한 경영주체 현황 및 실태조사 (국립산림과학원)" }, 
+  { date: "2021. 03.", description: "지역순환형 임업을 위한 경영주체 현황 및 실태조사 (국립산림과학원)" },
   { date: "2021. 03.", description: "지역상생형 산림특화 사회적경제 모델 수립 2차 (한국임업진흥원)" },
   { date: "2021. 04.", description: "강원 어촌마을 현황 조사 (강원귀어귀촌지원센터)" },
   { date: "2021. 04.", description: "귀산촌 스타트업(산림관광비즈니스) 교육기관 선정(한국임업진흥원)" },
@@ -139,7 +140,7 @@ const chronologicalProjects: { date: string; description: string }[] = [
   { date: "2023. 05.", description: "인구소멸위기지역 찾아가는 청소년산림교육 용역 (산림청, 영월군 주천중학교)" },
   { date: "2023. 05.", description: "시골언니 프로젝트 운영기관 (농림수산식품교육문화정보원)" },
   { date: "2023. 07.", description: "국가숲길, 명품숲길 50 홍보 용역 (산림청)" },
-  { date: "2023. 09.", description: "둔내면 도시재생대학 운영 (횡성군)" }, 
+  { date: "2023. 09.", description: "둔내면 도시재생대학 운영 (횡성군)" },
   { date: "2024. 02.", description: "목재문화체험장 타당성 조사 (원주시)" },
   { date: "2024. 05.", description: "시골언니 프로젝트 운영기관 (농림수산식품교육문화정보원)" },
   { date: "2025. 05.", description: "시골언니 프로젝트 운영 (농림수산식품교육문화정보원)" },
@@ -160,7 +161,7 @@ export default function ProjectPage() {
         <div className="absolute inset-0 bg-linear-to-br from-brand via-brand to-brand-hover" />
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_50%_at_50%_0%,rgba(255,255,255,0.18),transparent_50%)]" />
         <div className="absolute bottom-0 left-0 right-0 h-24 bg-linear-to-t from-background to-transparent" />
-        <div className="relative z-10 mx-auto w-full max-w-3xl lg:max-w-5xl">
+        <FadeIn className="relative z-10 mx-auto w-full max-w-3xl lg:max-w-5xl" direction="up">
           <p className="mb-2 text-sm font-medium uppercase tracking-[0.2em] text-white/80">
             Our Work
           </p>
@@ -179,15 +180,16 @@ export default function ProjectPage() {
             <span className="text-white/50">·</span>
             <span>자원 재생</span>
           </div>
-        </div>
+        </FadeIn>
       </section>
 
       {/* 카테고리별 상세 프로젝트 - 데스크톱에서 넓은 단일 컬럼 */}
       <div className="px-4 py-16 sm:px-6 sm:py-20 lg:px-10 xl:px-12">
         <div className="mx-auto w-full max-w-4xl md:max-w-5xl lg:max-w-6xl xl:max-w-7xl space-y-20 lg:space-y-24">
-          {categories.map((cat) => (
-            <section
+          {categories.map((cat, catIdx) => (
+            <FadeIn
               key={cat.id}
+              direction="up"
               className={`rounded-2xl border-2 p-6 sm:p-10 lg:p-12 xl:p-14 ${colorClasses[cat.color].card}`}
             >
               <div className="mb-8 flex items-start gap-4 lg:mb-10">
@@ -225,9 +227,8 @@ export default function ProjectPage() {
                       >
                         {hasImages && (
                           <div
-                            className={`flex flex-col gap-3 sm:min-h-0 ${
-                              imageOnRight ? "sm:col-start-2 sm:row-start-1" : ""
-                            }`}
+                            className={`flex flex-col gap-3 sm:min-h-0 ${imageOnRight ? "sm:col-start-2 sm:row-start-1" : ""
+                              }`}
                           >
                             {singleImage ? (
                               <div className="relative aspect-4/3 overflow-hidden rounded-xl border border-border/60 bg-stone-100 shadow-md lg:rounded-2xl">
@@ -241,11 +242,10 @@ export default function ProjectPage() {
                               </div>
                             ) : (
                               <div
-                                className={`grid gap-3 lg:gap-4 ${
-                                  images.length === 2
+                                className={`grid gap-3 lg:gap-4 ${images.length === 2
                                     ? "grid-cols-2"
                                     : "grid-cols-2 lg:grid-cols-3"
-                                }`}
+                                  }`}
                               >
                                 {images.map((img, j) => (
                                   <div
@@ -280,7 +280,7 @@ export default function ProjectPage() {
                   );
                 })}
               </ul>
-            </section>
+            </FadeIn>
           ))}
         </div>
       </div>
@@ -288,22 +288,21 @@ export default function ProjectPage() {
       {/* 연도·월 순 전체 프로젝트 타임라인 - 데스크톱에서 넓게 */}
       <section className="border-t border-border bg-linear-to-b from-surface to-background px-4 py-20 sm:px-6 sm:py-24 lg:px-10 xl:px-12">
         <div className="mx-auto w-full max-w-4xl md:max-w-5xl lg:max-w-6xl xl:max-w-7xl">
-          <div className="mb-10 text-center sm:mb-12 lg:mb-14">
+          <FadeIn className="mb-10 text-center sm:mb-12 lg:mb-14" direction="up">
             <p className="text-sm font-medium uppercase tracking-widest text-brand">
               Timeline
             </p>
             <h2 className="mt-2 text-2xl font-bold text-foreground sm:text-3xl lg:text-4xl">
               Project History
             </h2>
-          </div>
-          <div className="overflow-hidden rounded-2xl border-2 border-border bg-surface shadow-sm lg:rounded-3xl">
+          </FadeIn>
+          <FadeIn className="overflow-hidden rounded-2xl border-2 border-border bg-surface shadow-sm lg:rounded-3xl" direction="up">
             <ul className="divide-y divide-border">
               {chronologicalProjects.map((item, i) => (
                 <li
                   key={i}
-                  className={`flex gap-6 px-5 py-4 transition-colors hover:bg-stone-50/80 sm:px-6 sm:py-5 lg:px-8 lg:py-6 ${
-                    i % 2 === 0 ? "bg-surface" : "bg-stone-50/50"
-                  }`}
+                  className={`flex gap-6 px-5 py-4 transition-colors hover:bg-stone-50/80 sm:px-6 sm:py-5 lg:px-8 lg:py-6 ${i % 2 === 0 ? "bg-surface" : "bg-stone-50/50"
+                    }`}
                 >
                   <span className="shrink-0 text-sm font-semibold text-brand sm:w-24 sm:text-base lg:w-28 lg:text-lg">
                     {item.date}
@@ -314,7 +313,7 @@ export default function ProjectPage() {
                 </li>
               ))}
             </ul>
-          </div>
+          </FadeIn>
         </div>
       </section>
     </main>

@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import CertGallery from "@/components/CertGallery";
 import OurPathTimeline from "@/components/OurPathTimeline";
+import FadeIn from "@/components/FadeIn";
 
 export const metadata: Metadata = {
   title: "About | (주)한국농산어촌네트워크",
@@ -102,16 +103,12 @@ export default function AboutPage() {
     <main className="min-h-screen bg-background">
       {/* 우리의 미션 - 히어로 섹션 */}
       <section className="relative flex min-h-[65vh] flex-col items-center justify-center overflow-hidden border-b border-border px-4 py-28 text-center sm:min-h-[70vh] sm:py-36">
-        {/* 배경 이미지 */}
         <div className="absolute inset-0">
-          {/* 어두운 그라데이션 오버레이 */}
           <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/50 to-black/70" />
-          {/* 브랜드 컬러 오버레이 */}
           <div className="absolute inset-0 bg-gradient-to-b from-brand/20 via-transparent to-brand/30" />
         </div>
 
-        {/* 콘텐츠 */}
-        <div className="relative z-10 mx-auto max-w-4xl">
+        <FadeIn className="relative z-10 mx-auto max-w-4xl" direction="up">
           <p className="mb-4 text-sm font-medium uppercase tracking-widest text-white/90 sm:text-base">
             우리의 미션
           </p>
@@ -125,15 +122,14 @@ export default function AboutPage() {
             <br />
             우리의 삶이 지속 가능하도록 함께합니다
           </p>
-        </div>
+        </FadeIn>
       </section>
 
-      {/* 歸 → Go: 돌아가는 곳이 아닌 찾아가는 공간으로 */}
+      {/* 歸 → Go */}
       <section className="border-b border-border bg-stone-50 px-4 py-20 sm:px-6 sm:py-24">
         <div className="mx-auto max-w-5xl">
           <div className="grid gap-8 lg:grid-cols-2 lg:items-center">
-            {/* 이미지 */}
-            <div className="order-2 lg:order-1">
+            <FadeIn className="order-2 lg:order-1" direction="right">
               <div className="relative aspect-square overflow-hidden rounded-xl shadow-lg">
                 <Image
                   src="/2.ABOUT/main_center.png"
@@ -142,9 +138,8 @@ export default function AboutPage() {
                   className="object-cover"
                 />
               </div>
-            </div>
-            {/* 텍스트 */}
-            <div className="order-1 space-y-4 lg:order-2">
+            </FadeIn>
+            <FadeIn className="order-1 space-y-4 lg:order-2" direction="left" delay={0.2}>
               <p className="text-2xl font-bold text-brand sm:text-3xl">
                 歸 → Go
               </p>
@@ -153,14 +148,13 @@ export default function AboutPage() {
                 <br />
                 <strong className="text-foreground">찾아가는 공간</strong>으로
               </p>
-            </div>
+            </FadeIn>
           </div>
         </div>
       </section>
 
-      {/* EXCATION: 탐색과 경험이 가득 찬 공간으로 */}
+      {/* EXCATION */}
       <section className="relative overflow-hidden border-b border-border px-4 py-20 sm:px-6 sm:py-24">
-        {/* 배경 이미지 */}
         <div className="absolute inset-0">
           <Image
             src="/2.ABOUT/130667122.1.jpg"
@@ -168,46 +162,32 @@ export default function AboutPage() {
             fill
             className="object-cover"
           />
-          {/* 어두운 오버레이 */}
           <div className="absolute inset-0 bg-black/40" />
         </div>
 
-        {/* 콘텐츠 */}
         <div className="relative z-10 mx-auto max-w-5xl">
           <div className="grid gap-8 lg:grid-cols-2 lg:items-center">
-            {/* 왼쪽: EXCATION 텍스트 */}
-            <div className="space-y-4 text-white">
+            <FadeIn className="space-y-4 text-white" direction="up">
               <h2 className="text-3xl font-bold sm:text-4xl md:text-5xl">
                 EXCATION
               </h2>
               <p className="text-lg leading-relaxed sm:text-xl">
                 탐색과 경험이 가득 찬 공간으로
               </p>
-            </div>
+            </FadeIn>
 
-            {/* 오른쪽: EXPLORATION + LOCATION = EXCATION */}
-            <div className="flex flex-col items-center justify-center space-y-2 rounded-2xl border border-white/20 bg-white/10 p-8 backdrop-blur-md sm:space-y-4 sm:p-10">
-              <p className="text-2xl font-bold text-white sm:text-3xl md:text-4xl">
-                EXPLORATION
-              </p>
-              <p className="text-3xl font-bold text-white sm:text-4xl md:text-5xl">
-                +
-              </p>
-              <p className="text-2xl font-bold text-white sm:text-3xl md:text-4xl">
-                LOCATION
-              </p>
-              <p className="text-3xl font-bold text-white sm:text-4xl md:text-5xl">
-                =
-              </p>
-              <p className="text-3xl font-bold text-white sm:text-4xl md:text-5xl">
-                EXCATION
-              </p>
-            </div>
+            <FadeIn className="flex flex-col items-center justify-center space-y-2 rounded-2xl border border-white/20 bg-white/10 p-8 backdrop-blur-md sm:space-y-4 sm:p-10" direction="up" delay={0.2}>
+              <p className="text-2xl font-bold text-white sm:text-3xl md:text-4xl">EXPLORATION</p>
+              <p className="text-3xl font-bold text-white sm:text-4xl md:text-5xl">+</p>
+              <p className="text-2xl font-bold text-white sm:text-3xl md:text-4xl">LOCATION</p>
+              <p className="text-3xl font-bold text-white sm:text-4xl md:text-5xl">=</p>
+              <p className="text-3xl font-bold text-white sm:text-4xl md:text-5xl">EXCATION</p>
+            </FadeIn>
           </div>
         </div>
       </section>
 
-      {/* about_1: 우리는 자연과 자원이 주는 가치에 기반한 */}
+      {/* about_1 */}
       <section className="relative overflow-hidden border-b border-border">
         <div className="flex flex-col">
           <div className="relative aspect-[16/10] w-full min-h-[40vh]">
@@ -219,14 +199,14 @@ export default function AboutPage() {
             />
           </div>
           <div className="flex flex-col justify-center bg-stone-100 px-6 py-12 sm:px-10 sm:py-16">
-            <p className="mx-auto max-w-3xl text-2xl font-bold leading-relaxed text-foreground sm:text-3xl md:text-4xl">
+            <FadeIn className="mx-auto max-w-3xl text-2xl font-bold leading-relaxed text-foreground sm:text-3xl md:text-4xl" direction="up">
               우리는 자연과 자원이 주는 가치에 기반한
-            </p>
+            </FadeIn>
           </div>
         </div>
       </section>
 
-      {/* about_2: 지속적인 삶의 방식을 찾고 주도함으로써 */}
+      {/* about_2 */}
       <section className="relative overflow-hidden border-b border-border">
         <div className="flex flex-col">
           <div className="relative aspect-[16/10] w-full min-h-[40vh]">
@@ -238,14 +218,14 @@ export default function AboutPage() {
             />
           </div>
           <div className="flex flex-col justify-center bg-stone-100 px-6 py-12 sm:px-10 sm:py-16">
-            <p className="mx-auto max-w-3xl text-2xl font-bold leading-relaxed text-foreground sm:text-3xl md:text-4xl">
+            <FadeIn className="mx-auto max-w-3xl text-2xl font-bold leading-relaxed text-foreground sm:text-3xl md:text-4xl" direction="up">
               지속적인 삶의 방식을 찾고 주도함으로써
-            </p>
+            </FadeIn>
           </div>
         </div>
       </section>
 
-      {/* about_3: 새로운 방식의 지역 탐색과 확장의 변화를 만들어 냅니다. */}
+      {/* about_3 */}
       <section className="relative overflow-hidden border-b border-border">
         <div className="flex flex-col">
           <div className="relative aspect-[16/10] w-full min-h-[40vh]">
@@ -257,16 +237,16 @@ export default function AboutPage() {
             />
           </div>
           <div className="flex flex-col justify-center bg-stone-100 px-6 py-12 sm:px-10 sm:py-16">
-            <p className="mx-auto max-w-3xl text-2xl font-bold leading-relaxed text-foreground sm:text-3xl md:text-4xl">
+            <FadeIn className="mx-auto max-w-3xl text-2xl font-bold leading-relaxed text-foreground sm:text-3xl md:text-4xl" direction="up">
               새로운 방식의 지역 탐색과 확장의 변화를 만들어 냅니다.
-            </p>
+            </FadeIn>
           </div>
         </div>
       </section>
 
       {/* 대표 인사말 */}
       <section className="bg-surface px-4 py-20 sm:px-6 sm:py-24">
-        <div className="mx-auto max-w-3xl">
+        <FadeIn className="mx-auto max-w-3xl" direction="up">
           <h2 className="mb-2 text-xl font-bold text-foreground">
             대표 인사말
           </h2>
@@ -314,32 +294,40 @@ export default function AboutPage() {
               ㈜한국농산어촌네트워크 대표 김소민
             </p>
           </div>
-        </div>
+        </FadeIn>
       </section>
 
-      {/* 연혁 - 시각화 타임라인 (연도 호버 시 해당 연도 연혁 표시) */}
+      {/* 연혁 */}
       <section className="border-t border-border bg-stone-100 px-4 py-20 sm:px-6 sm:py-24">
         <div className="mx-auto max-w-4xl">
-          <h2 className="mb-2 text-xl font-bold text-foreground">
-            우리의 경로
-          </h2>
-          <p className="mb-12 text-muted">
-            우리는 지나온 경로의 확인을 통해 목적지를 더욱 확고히 합니다.
-          </p>
-          <OurPathTimeline data={timelineData} />
+          <FadeIn direction="up">
+            <h2 className="mb-2 text-xl font-bold text-foreground">
+              우리의 경로
+            </h2>
+            <p className="mb-12 text-muted">
+              우리는 지나온 경로의 확인을 통해 목적지를 더욱 확고히 합니다.
+            </p>
+          </FadeIn>
+          <FadeIn direction="up" delay={0.2}>
+            <OurPathTimeline data={timelineData} />
+          </FadeIn>
         </div>
       </section>
 
       {/* 인증서 */}
       <section className="border-t border-border bg-background px-4 py-20 sm:px-6 sm:py-24">
         <div className="mx-auto max-w-4xl">
-          <h2 className="mb-2 text-xl font-bold text-foreground">
-            인증서
-          </h2>
-          <p className="mb-10 text-muted">
-            우리가 받은 인증입니다.
-          </p>
-          <CertGallery />
+          <FadeIn direction="up">
+            <h2 className="mb-2 text-xl font-bold text-foreground">
+              인증서
+            </h2>
+            <p className="mb-10 text-muted">
+              우리가 받은 인증입니다.
+            </p>
+          </FadeIn>
+          <FadeIn direction="up" delay={0.2}>
+            <CertGallery />
+          </FadeIn>
         </div>
       </section>
     </main>
