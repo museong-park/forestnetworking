@@ -236,9 +236,6 @@ export default function AboutPage() {
           <h2 className="mb-2 text-xl font-bold text-foreground">
             대표 인사말
           </h2>
-          <p className="mb-10 text-muted">
-            자연과 지역을 바탕으로 한 우리의 방향을 말씀드립니다.
-          </p>
           <div className="space-y-6 text-muted leading-relaxed">
             <p>
               (주)한국농산어촌네트워크는 사물의 이치를 끝까지 파고드는
@@ -268,11 +265,11 @@ export default function AboutPage() {
               (주)한국농산어촌네트워크는 지역의 본질을 꿰뚫는 통찰과 실행력으로
               농산어촌의 새로운 미래를 증명하겠습니다.
             </p>
-            <p className="pt-4 text-sm font-bold text-foreground">
-              ㈜한국농산어촌네트워크 대표 김소민
-            </p>
             <p className="font-bold text-brand mt-4 text-lg">
               우리의 걸음이 지역의 흐름이 됩니다.
+            </p>
+            <p className="pt-4 text-sm font-bold text-foreground text-right">
+              ㈜한국농산어촌네트워크 대표 김소민
             </p>
           </div>
         </FadeIn>
