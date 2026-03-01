@@ -207,7 +207,7 @@ export default function ProjectPage() {
                 </div>
               </div>
               <ul className="space-y-12 lg:space-y-16">
-                {cat.projects.map((proj, i) => {
+                {[...cat.projects].reverse().map((proj, i) => {
                   const images =
                     "images" in proj && Array.isArray(proj.images) ? proj.images : [];
                   const hasImages = images.length > 0;
@@ -298,7 +298,7 @@ export default function ProjectPage() {
           </FadeIn>
           <FadeIn className="overflow-hidden rounded-2xl border-2 border-border bg-surface shadow-sm lg:rounded-3xl" direction="up">
             <ul className="divide-y divide-border">
-              {chronologicalProjects.map((item, i) => (
+              {[...chronologicalProjects].reverse().map((item, i) => (
                 <li
                   key={i}
                   className={`flex gap-6 px-5 py-4 transition-colors hover:bg-stone-50/80 sm:px-6 sm:py-5 lg:px-8 lg:py-6 ${i % 2 === 0 ? "bg-surface" : "bg-stone-50/50"

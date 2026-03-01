@@ -187,60 +187,46 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* about_1 */}
-      <section className="relative overflow-hidden border-b border-border">
-        <div className="flex flex-col">
-          <div className="relative aspect-[16/10] w-full min-h-[40vh]">
-            <Image
-              src="/2.ABOUT/about_1.png"
-              alt="자연과 자원"
-              fill
-              className="object-cover"
-            />
-          </div>
-          <div className="flex flex-col justify-center bg-stone-100 px-6 py-12 sm:px-10 sm:py-16">
-            <FadeIn className="mx-auto max-w-3xl text-2xl font-bold leading-relaxed text-foreground sm:text-3xl md:text-4xl" direction="up">
+      {/* About Grid (2->2->1) */}
+      <section className="bg-stone-50 px-4 py-20 sm:px-6 sm:py-24">
+        <div className="mx-auto max-w-6xl">
+          <FadeIn className="mb-16 text-center" direction="up">
+            <h2 className="text-2xl font-bold leading-relaxed text-foreground sm:text-3xl md:text-4xl">
               우리는 자연과 자원이 주는 가치에 기반한
-            </FadeIn>
-          </div>
-        </div>
-      </section>
-
-      {/* about_2 */}
-      <section className="relative overflow-hidden border-b border-border">
-        <div className="flex flex-col">
-          <div className="relative aspect-[16/10] w-full min-h-[40vh]">
-            <Image
-              src="/2.ABOUT/about_2.png"
-              alt="지속적인 삶의 방식"
-              fill
-              className="object-cover"
-            />
-          </div>
-          <div className="flex flex-col justify-center bg-stone-100 px-6 py-12 sm:px-10 sm:py-16">
-            <FadeIn className="mx-auto max-w-3xl text-2xl font-bold leading-relaxed text-foreground sm:text-3xl md:text-4xl" direction="up">
+              <br />
               지속적인 삶의 방식을 찾고 주도함으로써
-            </FadeIn>
-          </div>
-        </div>
-      </section>
-
-      {/* about_3 */}
-      <section className="relative overflow-hidden border-b border-border">
-        <div className="flex flex-col">
-          <div className="relative aspect-[16/10] w-full min-h-[40vh]">
-            <Image
-              src="/2.ABOUT/about_3.png"
-              alt="지역 탐색과 확장"
-              fill
-              className="object-cover"
-            />
-          </div>
-          <div className="flex flex-col justify-center bg-stone-100 px-6 py-12 sm:px-10 sm:py-16">
-            <FadeIn className="mx-auto max-w-3xl text-2xl font-bold leading-relaxed text-foreground sm:text-3xl md:text-4xl" direction="up">
+              <br />
               새로운 방식의 지역 탐색과 확장의 변화를 만들어 냅니다.
-            </FadeIn>
-          </div>
+            </h2>
+          </FadeIn>
+
+          {/* 2 -> 2 -> 1 Grid */}
+          <FadeIn className="flex flex-col gap-4 sm:gap-6" direction="up" delay={0.2}>
+            {/* 첫 번째 줄 (2개) */}
+            <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-6">
+              <div className="relative aspect-[4/3] w-full overflow-hidden rounded-xl shadow-md">
+                <Image src="/2.ABOUT/about_1.png" alt="이미지 교체용 1" fill className="object-cover" />
+              </div>
+              <div className="relative aspect-[4/3] w-full overflow-hidden rounded-xl shadow-md">
+                <Image src="/2.ABOUT/about_2.png" alt="이미지 교체용 2" fill className="object-cover" />
+              </div>
+            </div>
+            {/* 두 번째 줄 (2개) */}
+            <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-6">
+              <div className="relative aspect-[4/3] w-full overflow-hidden rounded-xl shadow-md">
+                <Image src="/2.ABOUT/about_3.png" alt="이미지 교체용 3" fill className="object-cover" />
+              </div>
+              <div className="relative aspect-[4/3] w-full overflow-hidden rounded-xl shadow-md">
+                <Image src="/2.ABOUT/picture.jpg" alt="이미지 교체용 4" fill className="object-cover" />
+              </div>
+            </div>
+            {/* 세 번째 줄 (1개) */}
+            <div className="grid grid-cols-1">
+              <div className="relative aspect-[21/9] w-full overflow-hidden rounded-xl shadow-md md:aspect-[3/1]">
+                <Image src="/2.ABOUT/main_center.png" alt="이미지 교체용 5" fill className="object-cover" />
+              </div>
+            </div>
+          </FadeIn>
         </div>
       </section>
 
@@ -254,11 +240,6 @@ export default function AboutPage() {
             자연과 지역을 바탕으로 한 우리의 방향을 말씀드립니다.
           </p>
           <div className="space-y-6 text-muted leading-relaxed">
-            <p>
-              우리는 자연과 자원이 주는 가치에 기반한 지속적인 삶의 방식을 찾고
-              주도함으로써, 새로운 방식의 지역 탐색과 확장의 변화를 만들어
-              냅니다.
-            </p>
             <p>
               (주)한국농산어촌네트워크는 사물의 이치를 끝까지 파고드는
               &lsquo;격물치지(格物致知)&rsquo;를 실천합니다. 우리는 책상 위의
@@ -287,11 +268,11 @@ export default function AboutPage() {
               (주)한국농산어촌네트워크는 지역의 본질을 꿰뚫는 통찰과 실행력으로
               농산어촌의 새로운 미래를 증명하겠습니다.
             </p>
-            <p className="font-bold text-brand">
-              우리의 걸음이 지역의 흐름이 됩니다.
-            </p>
-            <p className="pt-4 text-sm text-muted">
+            <p className="pt-4 text-sm font-bold text-foreground">
               ㈜한국농산어촌네트워크 대표 김소민
+            </p>
+            <p className="font-bold text-brand mt-4 text-lg">
+              우리의 걸음이 지역의 흐름이 됩니다.
             </p>
           </div>
         </FadeIn>
@@ -330,6 +311,6 @@ export default function AboutPage() {
           </FadeIn>
         </div>
       </section>
-    </main>
+    </main >
   );
 }

@@ -1,5 +1,24 @@
 @import "tailwindcss";
 
+@font-face {
+  font-family: 'KoPubWorldDotum_Pro';
+  font-weight: 300;
+  font-style: normal;
+  src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2201-2@1.0/KoPubWorldDotum_Pro_Light.woff') format('woff');
+}
+@font-face {
+  font-family: 'KoPubWorldDotum_Pro';
+  font-weight: 500;
+  font-style: normal;
+  src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2201-2@1.0/KoPubWorldDotum_Pro_Medium.woff') format('woff');
+}
+@font-face {
+  font-family: 'KoPubWorldDotum_Pro';
+  font-weight: 700;
+  font-style: normal;
+  src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2201-2@1.0/KoPubWorldDotum_Pro_Bold.woff') format('woff');
+}
+
 /* 통일된 라이트 팔레트: 딥 그린 + 웜 네츄럴 */
 :root {
   --background: #fafaf9;
@@ -21,7 +40,7 @@
   --color-muted: var(--muted);
   --color-surface: var(--surface);
   --color-brand-muted: var(--brand-muted);
-  --font-sans: var(--font-noto-sans-kr), sans-serif;
+  --font-sans: 'KoPubWorldDotum_Pro', sans-serif;
 }
 
 body {

@@ -32,64 +32,78 @@ export default function CommunityPage() {
       <div className="px-4 py-12 sm:px-6">
         <div className="mx-auto max-w-3xl space-y-12">
           <section>
-            <FadeIn direction="up">
-              <h2 className="mb-6 text-lg font-bold text-foreground">
-                공지사항
-              </h2>
+            <FadeIn direction="up" className="mb-6 flex items-center justify-between">
+              <h2 className="text-xl font-bold text-foreground">공지사항</h2>
             </FadeIn>
+
             <FadeIn direction="up" delay={0.1}>
-              <ul className="divide-y divide-border rounded-lg border border-border bg-surface">
-                {notices.length === 0 ? (
-                  <li className="px-4 py-8 text-center text-muted">
-                    등록된 공지사항이 없습니다.
-                  </li>
-                ) : (
-                  notices.map((item) => (
-                    <li key={item.id}>
-                      <Link
-                        href="#"
-                        className="flex items-center justify-between px-4 py-4 transition-colors hover:bg-stone-50 sm:px-6"
-                      >
-                        <span className="font-medium text-foreground">
-                          {item.title}
-                        </span>
-                        <span className="text-sm text-muted">{item.date}</span>
-                      </Link>
+              <div className="overflow-hidden rounded-t-lg border-t-2 border-brand border-x border-b border-border bg-surface shadow-sm">
+                <div className="grid grid-cols-[3rem_1fr_6rem] gap-4 border-b border-border bg-stone-50 px-4 py-4 text-sm font-bold text-foreground sm:grid-cols-[4rem_1fr_8rem] sm:px-6">
+                  <div className="text-center">No.</div>
+                  <div>제목</div>
+                  <div className="text-center">등록일</div>
+                </div>
+                <ul className="divide-y divide-border">
+                  {notices.length === 0 ? (
+                    <li className="px-4 py-16 text-center text-muted">
+                      등록된 공지사항이 없습니다.
                     </li>
-                  ))
-                )}
-              </ul>
+                  ) : (
+                    notices.map((item, index) => (
+                      <li key={item.id}>
+                        <Link
+                          href="#"
+                          className="grid grid-cols-[3rem_1fr_6rem] items-center gap-4 px-4 py-4 transition-colors hover:bg-stone-50/80 sm:grid-cols-[4rem_1fr_8rem] sm:px-6"
+                        >
+                          <div className="text-center text-sm text-muted">{notices.length - index}</div>
+                          <div className="truncate font-medium text-foreground">
+                            {item.title}
+                          </div>
+                          <div className="text-center text-sm text-muted">{item.date}</div>
+                        </Link>
+                      </li>
+                    ))
+                  )}
+                </ul>
+              </div>
             </FadeIn>
           </section>
 
           <section>
-            <FadeIn direction="up">
-              <h2 className="mb-6 text-lg font-bold text-foreground">
-                보도자료
-              </h2>
+            <FadeIn direction="up" className="mb-6 flex items-center justify-between">
+              <h2 className="text-xl font-bold text-foreground">보도자료</h2>
             </FadeIn>
+
             <FadeIn direction="up" delay={0.1}>
-              <ul className="divide-y divide-border rounded-lg border border-border bg-surface">
-                {press.length === 0 ? (
-                  <li className="px-4 py-8 text-center text-muted">
-                    등록된 보도자료가 없습니다.
-                  </li>
-                ) : (
-                  press.map((item) => (
-                    <li key={item.id}>
-                      <Link
-                        href="#"
-                        className="flex items-center justify-between px-4 py-4 transition-colors hover:bg-stone-50 sm:px-6"
-                      >
-                        <span className="font-medium text-foreground">
-                          {item.title}
-                        </span>
-                        <span className="text-sm text-muted">{item.date}</span>
-                      </Link>
+              <div className="overflow-hidden rounded-t-lg border-t-2 border-brand border-x border-b border-border bg-surface shadow-sm">
+                <div className="grid grid-cols-[3rem_1fr_6rem] gap-4 border-b border-border bg-stone-50 px-4 py-4 text-sm font-bold text-foreground sm:grid-cols-[4rem_1fr_8rem] sm:px-6">
+                  <div className="text-center">No.</div>
+                  <div>제목</div>
+                  <div className="text-center">등록일</div>
+                </div>
+                <ul className="divide-y divide-border">
+                  {press.length === 0 ? (
+                    <li className="px-4 py-16 text-center text-muted">
+                      등록된 보도자료가 없습니다.
                     </li>
-                  ))
-                )}
-              </ul>
+                  ) : (
+                    press.map((item, index) => (
+                      <li key={item.id}>
+                        <Link
+                          href="#"
+                          className="grid grid-cols-[3rem_1fr_6rem] items-center gap-4 px-4 py-4 transition-colors hover:bg-stone-50/80 sm:grid-cols-[4rem_1fr_8rem] sm:px-6"
+                        >
+                          <div className="text-center text-sm text-muted">{press.length - index}</div>
+                          <div className="truncate font-medium text-foreground">
+                            {item.title}
+                          </div>
+                          <div className="text-center text-sm text-muted">{item.date}</div>
+                        </Link>
+                      </li>
+                    ))
+                  )}
+                </ul>
+              </div>
             </FadeIn>
           </section>
         </div>

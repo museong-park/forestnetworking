@@ -46,9 +46,8 @@ export default function OurPathTimeline({ data }: Props) {
                 <button
                   type="button"
                   onClick={() => toggleYear(year)}
-                  className={`text-left text-lg font-bold transition-colors hover:text-brand focus:outline-none focus:ring-2 focus:ring-brand focus:ring-offset-2 sm:text-xl ${
-                    isActive ? "text-brand" : "text-foreground"
-                  }`}
+                  className={`text-left text-lg font-bold transition-colors hover:text-brand focus:outline-none focus:ring-2 focus:ring-brand focus:ring-offset-2 sm:text-xl ${isActive ? "text-brand" : "text-foreground"
+                    }`}
                   aria-expanded={isActive}
                   aria-label={`${year}년 연혁 ${isActive ? "접기" : "펼치기"}`}
                 >
@@ -65,8 +64,6 @@ export default function OurPathTimeline({ data }: Props) {
                   />
                   {uniqueMonths.map((evt) => {
                     const leftPercent = ((evt.month - 0.5) / 12) * 100;
-                    const isOrange = evt.highlight === "orange";
-                    const isGreen = evt.highlight === "green";
                     return (
                       <div
                         key={`${year}-${evt.month}-${evt.label}`}
@@ -77,23 +74,7 @@ export default function OurPathTimeline({ data }: Props) {
                           transform: "translate(-50%, 0)",
                         }}
                       >
-                        <span
-                          className={`block shrink-0 border-2 ${
-                            isOrange
-                              ? "border-amber-500 bg-amber-500"
-                              : isGreen
-                                ? "border-brand bg-brand rounded-full"
-                                : "border-stone-300 bg-stone-100 rounded-full"
-                          } ${isOrange ? "h-3.5 w-3.5" : "h-3 w-3"}`}
-                          style={
-                            isOrange
-                              ? {
-                                  clipPath:
-                                    "polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%)",
-                                }
-                              : undefined
-                          }
-                        />
+                        <span className="block shrink-0 rounded-full border-2 border-brand bg-brand h-3 w-3" />
                         <span className="mt-0.5 whitespace-nowrap text-[10px] font-medium text-muted sm:text-xs">
                           {evt.monthLabel}
                         </span>
@@ -104,9 +85,8 @@ export default function OurPathTimeline({ data }: Props) {
 
                 {/* 호버/클릭 시 해당 연도 연혁 카드 */}
                 <div
-                  className={`overflow-hidden transition-all duration-200 ease-out ${
-                    isActive ? "mt-4 max-h-96 opacity-100" : "max-h-0 opacity-0"
-                  }`}
+                  className={`overflow-hidden transition-all duration-200 ease-out ${isActive ? "mt-4 max-h-96 opacity-100" : "max-h-0 opacity-0"
+                    }`}
                 >
                   <div className="rounded-xl border border-border bg-surface px-5 py-4 shadow-sm">
                     <p className="mb-3 text-xs font-semibold uppercase tracking-wider text-brand">
@@ -137,6 +117,6 @@ export default function OurPathTimeline({ data }: Props) {
         연도에 마우스를 올리거나 클릭하면 해당 연도의 연혁을 확인할 수
         있습니다.
       </p>
-    </div>
+    </div >
   );
 }

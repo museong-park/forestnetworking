@@ -28,7 +28,7 @@ export default function CertGallery() {
 
   return (
     <>
-      <div className="grid gap-4 sm:grid-cols-2 md:grid-cols-3">
+      <div className="grid grid-cols-3 gap-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6">
         {CERTS.map((cert, i) => (
           <button
             key={cert.src}
