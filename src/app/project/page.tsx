@@ -60,7 +60,7 @@ const categories = [
       {
         name: "산촌활력특화사업 '가평 조항마을'",
         desc: "마을이 품고 있는 자원인 국유림 '화백숲'을 활용한 다양한 체험을 바탕으로 지역을 탐색하고, 산촌생활을 경험할 수 있도록 프로그램 기획. 국유림을 활용한 지속가능한 사업화를 위한 '국유림상생포럼' 개최. 자원 활용과 이에 기반한 다양한 사업화를 통한 관계인구 확장, 지역 탐색 프로그램 개발 용역 수행.",
-        images: [{ src: "/4.프로젝트/sustainability_1.jpg", alt: "가평 조항마을 – 국유림 화백숲 체험" }],
+        images: [{ src: "/4.프로젝트/sustainability_1.JPG", alt: "가평 조항마을 – 국유림 화백숲 체험" }],
       },
       {
         name: "산촌활력특화사업 '여주 주어리마을'",
@@ -243,8 +243,8 @@ export default function ProjectPage() {
                             ) : (
                               <div
                                 className={`grid gap-3 lg:gap-4 ${images.length === 2
-                                    ? "grid-cols-2"
-                                    : "grid-cols-2 lg:grid-cols-3"
+                                  ? "grid-cols-2"
+                                  : "grid-cols-2 lg:grid-cols-3"
                                   }`}
                               >
                                 {images.map((img, j) => (
