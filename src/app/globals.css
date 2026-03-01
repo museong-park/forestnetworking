@@ -6,12 +6,14 @@
   font-style: normal;
   src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2201-2@1.0/KoPubWorldDotum_Pro_Light.woff') format('woff');
 }
+
 @font-face {
   font-family: 'KoPubWorldDotum_Pro';
   font-weight: 500;
   font-style: normal;
   src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2201-2@1.0/KoPubWorldDotum_Pro_Medium.woff') format('woff');
 }
+
 @font-face {
   font-family: 'KoPubWorldDotum_Pro';
   font-weight: 700;
@@ -24,9 +26,9 @@
   --background: #fafaf9;
   --foreground: #1c1917;
   --muted: #57534e;
-  --brand: #166534;
-  --brand-hover: #14532d;
-  --brand-muted: #dcfce7;
+  --brand: #703890;
+  --brand-hover: #5c2d76;
+  --brand-muted: #f3ebf5;
   --surface: #ffffff;
   --border: #e7e5e4;
 }
@@ -54,6 +56,7 @@ body {
   0% {
     transform: translateX(0);
   }
+
   100% {
     transform: translateX(-50%);
   }
