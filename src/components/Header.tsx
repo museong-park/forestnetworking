@@ -39,14 +39,6 @@ export default function Header() {
               {label}
             </Link>
           ))}
-          <div className="ml-2 flex items-center gap-4 border-l border-border pl-6 lg:ml-6">
-            <a href="https://blog.naver.com/prologue/PrologueList.naver?blogId=forestnetworking&categoryNo=21" target="_blank" rel="noopener noreferrer" className="text-muted hover:text-[#03C75A] transition-colors" aria-label="Naver Blog">
-              <svg viewBox="0 0 24 24" fill="currentColor" className="size-5"><path d="M16.273 12.845L7.376 0H0v24h7.727V11.155L16.624 24H24V0h-7.727v12.845z" /></svg>
-            </a>
-            <a href="https://www.instagram.com/3goforest?igsh=YW1zNzJ0cXg5ejY=" target="_blank" rel="noopener noreferrer" className="text-muted hover:text-[#E4405F] transition-colors" aria-label="Instagram">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="size-5"><rect width="20" height="20" x="2" y="2" rx="5" ry="5" /><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" /><line x1="17.5" x2="17.51" y1="6.5" y2="6.5" /></svg>
-            </a>
-          </div>
         </nav>
 
         <button
