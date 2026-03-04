@@ -17,12 +17,12 @@ const categories = [
       {
         name: "시골언니프로젝트 (2025 1기: 08.18~23 / 2기: 09.08~13)",
         desc: "귀농·귀촌에 관심 있는 20~40대 여성을 대상으로 새로운 지역(원주)에서 이주·정주의 가능성을 경험하고, 스스로 설계해 볼 수 있도록 다양한 탐색·체험을 제공. 참가자의 자연스럽고 적극적인 귀농·귀촌 경험이 실제 이주·정주의 성과로 이어지는 지역 탐색·교육 프로그램 기획 및 운영.",
-        images: [{ src: "/4.프로젝트/exploration_1.JPG", alt: "탐색 경험 – 마을·공동체 체험" }, { src: "/4.프로젝트/exploration_2.JPG", alt: "탐색 경험 – 핸즈온 워크숍" }],
+        images: [{ src: "/4.프로젝트/exploration_1.JPG", alt: "탐색 경험 – 마을·공동체 체험" }],
       },
       {
         name: "BETTER里 인구감소지역 관광인구 증대 사업",
         desc: "가평 조항마을을 중심으로 지역이 보유한 '사람'과 '삶의 방식'에 집중하고 콘텐츠화하여 방문객이 능동적으로 탐색하고 관계를 맺는 '마을 탐색형 프로그램 Excation' 설계 및 도입. 단순체험·원격근무에서 이주·정착 경험, 설계 및 탐색으로 확장하여 관계인구 확장 거점화 모델 구현.",
-        images: [],
+        images: [{ src: "/4.프로젝트/exploration_2.JPG", alt: "탐색 경험 – 핸즈온 워크숍" }],
       },
     ],
   },
@@ -87,7 +87,7 @@ const categories = [
       {
         name: "산불피해목 기반 브랜드 <온림> 런칭 & 제품 개발",
         desc: "산불피해목의 활용 가치에 기반한 브랜드 <온림> 기획·런칭. 지역별 관광자원(산)과 연계를 통한 지속 운영이 가능한 굿즈 시리즈 '다다름'과 숲에 기반해 산림자원(산불피해목)의 사회적·교육적 가치를 공유하는 목재 교구 시리즈 '머무름' 개발. 단순 자원 활용을 넘어 순환, 재생, 생태계복원의 가치를 전달.",
-        images: [{ src: "/4.프로젝트/regeneration_1.jpg", alt: "브랜드 온림 – 산불피해목 활용 제품" }],
+        images: [{ src: "/4.프로젝트/regeneration_1.jpg", alt: "브랜드 온림 – 산불피해목 활용 제품" }, { src: "/4.프로젝트/regeneration_2.jpg", alt: "브랜드 온림 – 산불피해목 활용 제품" }],
       },
     ],
   },
@@ -207,7 +207,7 @@ export default function ProjectPage() {
                 </div>
               </div>
               <ul className="space-y-12 lg:space-y-16">
-                {[...cat.projects].reverse().map((proj, i) => {
+                {[...cat.projects].map((proj, i) => {
                   const images =
                     "images" in proj && Array.isArray(proj.images) ? proj.images : [];
                   const hasImages = images.length > 0;

@@ -125,108 +125,76 @@ export default function AboutPage() {
         </FadeIn>
       </section>
 
-      {/* 歸 → Go */}
-      <section className="border-b border-border bg-stone-50 px-4 py-20 sm:px-6 sm:py-24">
+      {/* 5 Cards Grid (2 -> 2 -> 1) */}
+      <section className="bg-stone-50 px-4 py-20 sm:px-6 sm:py-24 border-b border-border">
         <div className="mx-auto max-w-5xl">
-          <div className="grid gap-8 lg:grid-cols-2 lg:items-center">
-            <FadeIn className="order-2 lg:order-1" direction="right">
-              <div className="relative aspect-square overflow-hidden rounded-xl shadow-lg">
-                <Image
-                  src="/2.ABOUT/main_center.png"
-                  alt="Go농 Go촌"
-                  fill
-                  className="object-cover"
-                />
-              </div>
-            </FadeIn>
-            <FadeIn className="order-1 space-y-4 lg:order-2" direction="left" delay={0.2}>
-              <p className="text-2xl font-bold text-brand sm:text-3xl">
-                歸 → Go
-              </p>
-              <p className="text-lg leading-relaxed text-muted sm:text-xl">
-                돌아가는 곳이 아닌
-                <br />
-                <strong className="text-foreground">찾아가는 공간</strong>으로
-              </p>
-            </FadeIn>
-          </div>
-        </div>
-      </section>
+          <div className="flex flex-col gap-6 sm:gap-8 lg:gap-12">
+            {/* Row 1 (2 items) */}
+            <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 sm:gap-8 lg:gap-12">
+              <FadeIn direction="up" delay={0.1} className="group flex h-full flex-col overflow-hidden rounded-[2.5rem] border-2 border-foreground/10 bg-white shadow-lg transition-all hover:-translate-y-1 hover:shadow-xl">
+                <div className="relative aspect-[4/3] w-full overflow-hidden border-b-2 border-foreground/10">
+                  <Image src="/2.ABOUT/main_center.png" alt="歸 → Go" fill className="object-cover transition-transform duration-500 group-hover:scale-105" />
+                </div>
+                <div className="flex grow flex-col items-center justify-center p-8 text-center sm:p-10">
+                  <h3 className="mb-3 text-xl font-bold tracking-tight text-brand sm:text-2xl">歸 → Go</h3>
+                  <p className="text-lg font-medium leading-relaxed text-foreground sm:text-xl whitespace-pre-line">
+                    {"돌아가는 곳이 아닌\n찾아가는 공간으로"}
+                  </p>
+                </div>
+              </FadeIn>
 
-      {/* EXCATION */}
-      <section className="relative overflow-hidden border-b border-border px-4 py-20 sm:px-6 sm:py-24">
-        <div className="absolute inset-0">
-          <Image
-            src="/2.ABOUT/130667122.1.jpg"
-            alt="탐색과 경험"
-            fill
-            className="object-cover"
-          />
-          <div className="absolute inset-0 bg-black/40" />
-        </div>
-
-        <div className="relative z-10 mx-auto max-w-5xl">
-          <div className="grid gap-8 lg:grid-cols-2 lg:items-center">
-            <FadeIn className="space-y-4 text-white" direction="up">
-              <h2 className="text-3xl font-bold sm:text-4xl md:text-5xl">
-                EXCATION
-              </h2>
-              <p className="text-lg leading-relaxed sm:text-xl">
-                탐색과 경험이 가득 찬 공간으로
-              </p>
-            </FadeIn>
-
-            <FadeIn className="flex flex-col items-center justify-center space-y-2 rounded-2xl border border-white/20 bg-white/10 p-8 backdrop-blur-md sm:space-y-4 sm:p-10" direction="up" delay={0.2}>
-              <p className="text-2xl font-bold text-white sm:text-3xl md:text-4xl">EXPLORATION</p>
-              <p className="text-3xl font-bold text-white sm:text-4xl md:text-5xl">+</p>
-              <p className="text-2xl font-bold text-white sm:text-3xl md:text-4xl">LOCATION</p>
-              <p className="text-3xl font-bold text-white sm:text-4xl md:text-5xl">=</p>
-              <p className="text-3xl font-bold text-white sm:text-4xl md:text-5xl">EXCATION</p>
-            </FadeIn>
-          </div>
-        </div>
-      </section>
-
-      {/* About Grid (2->2->1) */}
-      <section className="bg-stone-50 px-4 py-20 sm:px-6 sm:py-24">
-        <div className="mx-auto max-w-6xl">
-          <FadeIn className="mb-16 text-center" direction="up">
-            <h2 className="text-2xl font-bold leading-relaxed text-foreground sm:text-3xl md:text-4xl">
-              우리는 자연과 자원이 주는 가치에 기반한
-              <br />
-              지속적인 삶의 방식을 찾고 주도함으로써
-              <br />
-              새로운 방식의 지역 탐색과 확장의 변화를 만들어 냅니다.
-            </h2>
-          </FadeIn>
-
-          {/* 2 -> 2 -> 1 Grid */}
-          <FadeIn className="flex flex-col gap-4 sm:gap-6" direction="up" delay={0.2}>
-            {/* 첫 번째 줄 (2개) */}
-            <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-6">
-              <div className="relative aspect-[4/3] w-full overflow-hidden rounded-xl shadow-md">
-                <Image src="/2.ABOUT/about_1.png" alt="이미지 교체용 1" fill className="object-cover" />
-              </div>
-              <div className="relative aspect-[4/3] w-full overflow-hidden rounded-xl shadow-md">
-                <Image src="/2.ABOUT/about_2.png" alt="이미지 교체용 2" fill className="object-cover" />
-              </div>
+              <FadeIn direction="up" delay={0.2} className="group flex h-full flex-col overflow-hidden rounded-[2.5rem] border-2 border-foreground/10 bg-white shadow-lg transition-all hover:-translate-y-1 hover:shadow-xl">
+                <div className="relative aspect-[4/3] w-full overflow-hidden border-b-2 border-foreground/10">
+                  <Image src="/2.ABOUT/130667122.1.jpg" alt="EXCATION" fill className="object-cover transition-transform duration-500 group-hover:scale-105" />
+                </div>
+                <div className="flex grow flex-col items-center justify-center p-8 text-center sm:p-10">
+                  <h3 className="mb-3 text-xl font-bold tracking-tight text-brand sm:text-2xl">EXCATION</h3>
+                  <p className="text-lg font-medium leading-relaxed text-foreground sm:text-xl whitespace-pre-line">
+                    {"탐색과 경험이\n가득 찬 공간으로"}
+                  </p>
+                </div>
+              </FadeIn>
             </div>
-            {/* 두 번째 줄 (2개) */}
-            <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-6">
-              <div className="relative aspect-[4/3] w-full overflow-hidden rounded-xl shadow-md">
-                <Image src="/2.ABOUT/about_3.png" alt="이미지 교체용 3" fill className="object-cover" />
-              </div>
-              <div className="relative aspect-[4/3] w-full overflow-hidden rounded-xl shadow-md">
-                <Image src="/2.ABOUT/picture.jpg" alt="이미지 교체용 4" fill className="object-cover" />
-              </div>
+
+            {/* Row 2 (2 items) */}
+            <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 sm:gap-8 lg:gap-12">
+              <FadeIn direction="up" delay={0.3} className="group flex h-full flex-col overflow-hidden rounded-[2.5rem] border-2 border-foreground/10 bg-white shadow-lg transition-all hover:-translate-y-1 hover:shadow-xl">
+                <div className="relative aspect-[4/3] w-full overflow-hidden border-b-2 border-foreground/10">
+                  <Image src="/2.ABOUT/about_1.png" alt="자연과 자원" fill className="object-cover transition-transform duration-500 group-hover:scale-105" />
+                </div>
+                <div className="flex grow flex-col items-center justify-center p-8 text-center sm:p-10">
+                  <p className="text-lg font-medium leading-relaxed text-foreground sm:text-xl whitespace-pre-line">
+                    {"우리는 자연과 자원이 주는\n가치에 기반한"}
+                  </p>
+                </div>
+              </FadeIn>
+
+              <FadeIn direction="up" delay={0.4} className="group flex h-full flex-col overflow-hidden rounded-[2.5rem] border-2 border-foreground/10 bg-white shadow-lg transition-all hover:-translate-y-1 hover:shadow-xl">
+                <div className="relative aspect-[4/3] w-full overflow-hidden border-b-2 border-foreground/10">
+                  <Image src="/2.ABOUT/picture.png" alt="지속적인 삶의 방식" fill className="object-cover transition-transform duration-500 group-hover:scale-105" />
+                </div>
+                <div className="flex grow flex-col items-center justify-center p-8 text-center sm:p-10">
+                  <p className="text-lg font-medium leading-relaxed text-foreground sm:text-xl whitespace-pre-line">
+                    {"지속적인 삶의 방식을\n찾고 주도함으로써"}
+                  </p>
+                </div>
+              </FadeIn>
             </div>
-            {/* 세 번째 줄 (1개) */}
+
+            {/* Row 3 (1 item) */}
             <div className="grid grid-cols-1">
-              <div className="relative aspect-[21/9] w-full overflow-hidden rounded-xl shadow-md md:aspect-[3/1]">
-                <Image src="/2.ABOUT/main_center.png" alt="이미지 교체용 5" fill className="object-cover" />
-              </div>
+              <FadeIn direction="up" delay={0.5} className="group flex h-full flex-col overflow-hidden rounded-[2.5rem] border-2 border-foreground/10 bg-white shadow-lg transition-all hover:-translate-y-1 hover:shadow-xl">
+                <div className="relative aspect-[21/9] w-full overflow-hidden border-b-2 border-foreground/10 sm:aspect-[3/1] lg:aspect-[4/1]">
+                  <Image src="/2.ABOUT/about_3.png" alt="지역 탐색과 확장" fill className="object-cover transition-transform duration-500 group-hover:scale-105 hover:object-center" />
+                </div>
+                <div className="flex grow flex-col items-center justify-center p-8 text-center sm:p-10">
+                  <p className="text-lg font-semibold leading-relaxed text-foreground sm:text-xl">
+                    새로운 방식의 지역 탐색과 확장의 변화를 만들어 냅니다.
+                  </p>
+                </div>
+              </FadeIn>
             </div>
-          </FadeIn>
+          </div>
         </div>
       </section>
 

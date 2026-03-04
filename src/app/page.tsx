@@ -116,7 +116,7 @@ export default function Home() {
             {[
               { id: "exploration", title: "탐색 경험", desc: "시골언니프로젝트 등 인구소멸 대응 대안 제시", color: "bg-emerald-50 text-emerald-700 border-emerald-100", borderHover: "hover:border-emerald-300" },
               { id: "value", title: "가치 향상", desc: "지역 축제 및 교육을 통한 삶의 질 향상", color: "bg-amber-50 text-amber-700 border-amber-100", borderHover: "hover:border-amber-300" },
-              { id: "sustainability", title: "지속 기반", desc: "산촌활력특화사업 등 устойчив한 기반 구축", color: "bg-teal-50 text-teal-700 border-teal-100", borderHover: "hover:border-teal-300" },
+              { id: "sustainability", title: "지속 기반", desc: "산촌활력특화사업 등 삶의 기반 구축", color: "bg-teal-50 text-teal-700 border-teal-100", borderHover: "hover:border-teal-300" },
               { id: "regeneration", title: "자원 재생", desc: "산불피해목 브랜드 <온림> 등 자원 순환", color: "bg-stone-100 text-stone-700 border-stone-200", borderHover: "hover:border-stone-400" },
             ].map((cat, i) => (
               <FadeIn key={i} direction="up" delay={i * 0.1}>
