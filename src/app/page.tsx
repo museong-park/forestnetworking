@@ -10,7 +10,7 @@ export default function Home() {
       <section className="relative flex min-h-[85vh] flex-col items-center justify-center overflow-hidden px-4 py-24 text-center">
         <div className="absolute inset-0">
           <Image
-            src="/1.MAIN/main.png"
+            src="/1.MAIN/hero.png"
             alt="자연과 자원"
             fill
             className="object-cover"
