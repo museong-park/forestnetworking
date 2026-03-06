@@ -114,10 +114,10 @@ export default function Home() {
 
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
             {[
-              { id: "exploration", title: "탐색 경험", desc: "시골언니프로젝트 등 인구소멸 대응 대안 제시", color: "bg-emerald-50 text-emerald-700 border-emerald-100", borderHover: "hover:border-emerald-300", image: "/4.프로젝트/exploration_1.jpg" },
-              { id: "value", title: "가치 향상", desc: "지역 축제 및 교육을 통한 삶의 질 향상", color: "bg-amber-50 text-amber-700 border-amber-100", borderHover: "hover:border-amber-300", image: "/4.프로젝트/value_1.jpg" },
-              { id: "sustainability", title: "지속 기반", desc: "산촌활력특화사업 등 삶의 기반 구축", color: "bg-teal-50 text-teal-700 border-teal-100", borderHover: "hover:border-teal-300", image: "/4.프로젝트/sustainability_1.jpg" },
-              { id: "regeneration", title: "자원 재생", desc: "산불피해목 브랜드 <온림> 등 자원 순환", color: "bg-stone-100 text-stone-700 border-stone-200", borderHover: "hover:border-stone-400", image: "/4.프로젝트/regeneration_1.jpg" },
+              { id: "exploration", title: "탐색 경험", desc: "시골언니프로젝트 등 인구소멸 대응 대안 제시", color: "bg-emerald-50 text-emerald-700 border-emerald-100", borderHover: "hover:border-emerald-300", image: "/4.프로젝트/exploration_1_v2.jpg" },
+              { id: "value", title: "가치 향상", desc: "지역 축제 및 교육을 통한 삶의 질 향상", color: "bg-amber-50 text-amber-700 border-amber-100", borderHover: "hover:border-amber-300", image: "/4.프로젝트/value_1_v2.jpg" },
+              { id: "sustainability", title: "지속 기반", desc: "산촌활력특화사업 등 삶의 기반 구축", color: "bg-teal-50 text-teal-700 border-teal-100", borderHover: "hover:border-teal-300", image: "/4.프로젝트/sustainability_1_v2.jpg" },
+              { id: "regeneration", title: "자원 재생", desc: "산불피해목 브랜드 <온림> 등 자원 순환", color: "bg-stone-100 text-stone-700 border-stone-200", borderHover: "hover:border-stone-400", image: "/4.프로젝트/regeneration_1_v2.jpg" },
             ].map((cat, i) => (
               <FadeIn key={i} direction="up" delay={i * 0.1}>
                 <div className={`group flex h-full flex-col overflow-hidden rounded-xl border-2 transition-all duration-300 ${cat.color} ${cat.borderHover}`}>
