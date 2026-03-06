@@ -17,12 +17,12 @@ const categories = [
       {
         name: "시골언니프로젝트 (2025 1기: 08.18~23 / 2기: 09.08~13)",
         desc: "귀농·귀촌에 관심 있는 20~40대 여성을 대상으로 새로운 지역(원주)에서 이주·정주의 가능성을 경험하고, 스스로 설계해 볼 수 있도록 다양한 탐색·체험을 제공. 참가자의 자연스럽고 적극적인 귀농·귀촌 경험이 실제 이주·정주의 성과로 이어지는 지역 탐색·교육 프로그램 기획 및 운영.",
-        images: [{ src: "/4.프로젝트/exploration_1.JPG", alt: "탐색 경험 – 마을·공동체 체험" }],
+        images: [{ src: "/4.프로젝트/exploration_1.jpg", alt: "탐색 경험 – 마을·공동체 체험" }],
       },
       {
         name: "BETTER里 인구감소지역 관광인구 증대 사업",
         desc: "가평 조항마을을 중심으로 지역이 보유한 '사람'과 '삶의 방식'에 집중하고 콘텐츠화하여 방문객이 능동적으로 탐색하고 관계를 맺는 '마을 탐색형 프로그램 Excation' 설계 및 도입. 단순체험·원격근무에서 이주·정착 경험, 설계 및 탐색으로 확장하여 관계인구 확장 거점화 모델 구현.",
-        images: [{ src: "/4.프로젝트/exploration_2.JPG", alt: "탐색 경험 – 핸즈온 워크숍" }],
+        images: [{ src: "/4.프로젝트/exploration_2.jpg", alt: "탐색 경험 – 핸즈온 워크숍" }],
       },
     ],
   },
@@ -35,7 +35,7 @@ const categories = [
       {
         name: "동화마을수목원 가을축제 (2025.10.25)",
         desc: "체험·교육·놀이·공연 등 온가족이 함께 즐길 수 있는 프로그램을 통해 산림문화복지 서비스를 제공하고 산림의 공익적 가치를 공유하는 '2025 동화마을수목원 가을축제' 용역 수행.",
-        images: [{ src: "/4.프로젝트/value_1.JPG", alt: "동화마을수목원 가을축제 – 가족 체험 활동" }],
+        images: [{ src: "/4.프로젝트/value_1.jpg", alt: "동화마을수목원 가을축제 – 가족 체험 활동" }],
       },
       {
         name: "영월 녹전중학교 청소년 푸드아트테라피 (12.24)",
@@ -60,7 +60,7 @@ const categories = [
       {
         name: "산촌활력특화사업 '가평 조항마을'",
         desc: "마을이 품고 있는 자원인 국유림 '화백숲'을 활용한 다양한 체험을 바탕으로 지역을 탐색하고, 산촌생활을 경험할 수 있도록 프로그램 기획. 국유림을 활용한 지속가능한 사업화를 위한 '국유림상생포럼' 개최. 자원 활용과 이에 기반한 다양한 사업화를 통한 관계인구 확장, 지역 탐색 프로그램 개발 용역 수행.",
-        images: [{ src: "/4.프로젝트/sustainability_1.JPG", alt: "가평 조항마을 – 국유림 화백숲 체험" }],
+        images: [{ src: "/4.프로젝트/sustainability_1.jpg", alt: "가평 조항마을 – 국유림 화백숲 체험" }],
       },
       {
         name: "산촌활력특화사업 '여주 주어리마을'",
@@ -206,75 +206,56 @@ export default function ProjectPage() {
                   </p>
                 </div>
               </div>
-              <ul className="space-y-12 lg:space-y-16">
+              <ul className="grid grid-cols-1 gap-10 sm:grid-cols-2 lg:gap-12">
                 {[...cat.projects].map((proj, i) => {
                   const images =
                     "images" in proj && Array.isArray(proj.images) ? proj.images : [];
                   const hasImages = images.length > 0;
-                  const imageOnRight = hasImages && i % 2 === 1;
                   const singleImage = images.length === 1;
                   return (
-                    <li
-                      key={i}
-                      className="border-b border-border/80 pb-12 last:border-0 last:pb-0 lg:pb-16 lg:last:pb-0"
-                    >
-                      <div
-                        className={
-                          hasImages
-                            ? "grid grid-cols-1 gap-6 sm:grid-cols-[1fr_1.25fr] sm:gap-10 lg:grid-cols-[1.1fr_1.5fr] lg:gap-12 xl:gap-14"
-                            : ""
-                        }
-                      >
-                        {hasImages && (
-                          <div
-                            className={`flex flex-col gap-3 sm:min-h-0 ${imageOnRight ? "sm:col-start-2 sm:row-start-1" : ""
-                              }`}
-                          >
-                            {singleImage ? (
-                              <div className="relative aspect-4/3 overflow-hidden rounded-xl border border-border/60 bg-stone-100 shadow-md lg:rounded-2xl">
-                                <Image
-                                  src={images[0].src}
-                                  alt={images[0].alt}
-                                  fill
-                                  className="object-cover transition-transform duration-300 hover:scale-[1.02]"
-                                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 45vw, 38vw"
-                                />
-                              </div>
-                            ) : (
-                              <div
-                                className={`grid gap-3 lg:gap-4 ${images.length === 2
-                                  ? "grid-cols-2"
-                                  : "grid-cols-2 lg:grid-cols-3"
-                                  }`}
-                              >
-                                {images.map((img, j) => (
-                                  <div
-                                    key={j}
-                                    className="relative aspect-4/3 overflow-hidden rounded-xl border border-border/60 bg-stone-100 shadow-md lg:rounded-2xl"
-                                  >
-                                    <Image
-                                      src={img.src}
-                                      alt={img.alt}
-                                      fill
-                                      className="object-cover transition-transform duration-300 hover:scale-[1.02]"
-                                      sizes="(max-width: 640px) 50vw, (max-width: 1024px) 22vw, 18vw"
-                                    />
-                                  </div>
-                                ))}
-                              </div>
-                            )}
-                          </div>
-                        )}
-                        <div
-                          className={`min-w-0 ${imageOnRight ? "sm:col-start-1 sm:row-start-1" : ""}`}
-                        >
-                          <h3 className="mb-3 text-base font-semibold leading-snug text-foreground sm:text-lg lg:text-xl lg:mb-4">
-                            {proj.name}
-                          </h3>
-                          <p className="text-sm leading-relaxed text-muted sm:text-[15px] lg:max-w-3xl lg:text-base lg:leading-relaxed">
-                            {proj.desc}
-                          </p>
+                    <li key={i} className="flex flex-col gap-5">
+                      {hasImages && (
+                        <div className="flex flex-col gap-3">
+                          {singleImage ? (
+                            <div className="relative aspect-4/3 overflow-hidden rounded-xl border border-border/60 bg-stone-100 shadow-md lg:rounded-2xl">
+                              <Image
+                                src={images[0].src}
+                                alt={images[0].alt}
+                                fill
+                                className="object-cover transition-transform duration-300 hover:scale-[1.02]"
+                                sizes="(max-width: 640px) 100vw, 50vw"
+                              />
+                            </div>
+                          ) : (
+                            <div
+                              className={`grid gap-3 lg:gap-4 ${images.length === 2 ? "grid-cols-2" : "grid-cols-2 lg:grid-cols-3"
+                                }`}
+                            >
+                              {images.map((img, j) => (
+                                <div
+                                  key={j}
+                                  className="relative aspect-4/3 overflow-hidden rounded-xl border border-border/60 bg-stone-100 shadow-md lg:rounded-2xl"
+                                >
+                                  <Image
+                                    src={img.src}
+                                    alt={img.alt}
+                                    fill
+                                    className="object-cover transition-transform duration-300 hover:scale-[1.02]"
+                                    sizes="(max-width: 640px) 50vw, 25vw"
+                                  />
+                                </div>
+                              ))}
+                            </div>
+                          )}
                         </div>
+                      )}
+                      <div className="min-w-0 flex-1">
+                        <h3 className="mb-3 text-base font-semibold leading-snug text-foreground sm:text-lg lg:text-xl lg:mb-4">
+                          {proj.name}
+                        </h3>
+                        <p className="text-sm leading-relaxed text-muted sm:text-[15px] lg:text-base lg:leading-relaxed">
+                          {proj.desc}
+                        </p>
                       </div>
                     </li>
                   );
