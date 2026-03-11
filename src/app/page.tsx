@@ -2,8 +2,19 @@ import Link from "next/link";
 import Image from "next/image";
 import ContactForm from "@/components/ContactForm";
 import FadeIn from "@/components/FadeIn";
+import { supabase } from "@/lib/supabase";
 
-export default function Home() {
+export default async function Home() {
+  const { data: recentPosts, error } = await supabase
+    .from("community_posts")
+    .select("id, title, created_at")
+    .order("created_at", { ascending: false })
+    .limit(3);
+
+  if (error) {
+    console.error("Error fetching recent posts:", error);
+  }
+
   return (
     <main className="bg-background">
       {/* 1. Hero Section */}
@@ -170,20 +181,29 @@ export default function Home() {
 
           <FadeIn direction="up" delay={0.2}>
             <ul className="divide-y divide-border border-y border-border">
-              {[
-                { id: 1, title: "가평 조항마을 우수 산촌마을 선정 소식 (보도자료)", date: "2025.01.15" },
-                { id: 2, title: "2025년도 상반기 '시골언니프로젝트' 참여자 모집 안내", date: "2025.02.01" }
-              ].map((item) => (
-                <li key={item.id}>
-                  <Link
-                    href="/community"
-                    className="flex flex-col gap-2 py-5 transition-colors hover:bg-stone-50 sm:flex-row sm:items-center sm:justify-between sm:px-4"
-                  >
-                    <span className="font-medium text-foreground sm:text-lg">{item.title}</span>
-                    <span className="text-sm text-muted">{item.date}</span>
-                  </Link>
+              {!recentPosts || recentPosts.length === 0 ? (
+                <li className="py-8 text-center text-sm text-stone-500">
+                  최근 등록된 소식이 없습니다.
                 </li>
-              ))}
+              ) : (
+                recentPosts.map((item) => (
+                  <li key={item.id}>
+                    <Link
+                      href={`/community/${item.id}`}
+                      className="flex flex-col gap-2 py-5 transition-colors hover:bg-stone-50 sm:flex-row sm:items-center sm:justify-between sm:px-4"
+                    >
+                      <span className="font-medium text-foreground sm:text-lg">{item.title}</span>
+                      <span className="text-sm text-muted">
+                        {new Date(item.created_at).toLocaleDateString("ko-KR", {
+                          year: "numeric",
+                          month: "2-digit",
+                          day: "2-digit"
+                        }).replace(/\.$/, "")}
+                      </span>
+                    </Link>
+                  </li>
+                ))
+              )}
             </ul>
           </FadeIn>
 
