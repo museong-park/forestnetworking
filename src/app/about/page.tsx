@@ -133,7 +133,7 @@ export default function AboutPage() {
             <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 sm:gap-8 lg:gap-12">
               <FadeIn direction="up" delay={0.1} className="group flex h-full flex-col overflow-hidden rounded-[2.5rem] border-2 border-foreground/10 bg-white shadow-lg transition-all hover:-translate-y-1 hover:shadow-xl">
                 <div className="relative aspect-[4/3] w-full overflow-hidden border-b-2 border-foreground/10">
-                  <Image src="/2.ABOUT/main_center.png" alt="歸 → Go" fill className="object-cover transition-transform duration-500 group-hover:scale-105" />
+                  <Image src="/2.ABOUT/picture.png" alt="歸 → Go" fill className="object-cover transition-transform duration-500 group-hover:scale-105" />
                 </div>
                 <div className="flex grow flex-col items-center justify-center p-8 text-center sm:p-10">
                   <h3 className="mb-3 text-xl font-bold tracking-tight text-brand sm:text-2xl">歸 → Go</h3>
@@ -145,7 +145,7 @@ export default function AboutPage() {
 
               <FadeIn direction="up" delay={0.2} className="group flex h-full flex-col overflow-hidden rounded-[2.5rem] border-2 border-foreground/10 bg-white shadow-lg transition-all hover:-translate-y-1 hover:shadow-xl">
                 <div className="relative aspect-[4/3] w-full overflow-hidden border-b-2 border-foreground/10">
-                  <Image src="/2.ABOUT/130667122.1.jpg" alt="EXCATION" fill className="object-cover transition-transform duration-500 group-hover:scale-105" />
+                  <Image src="/2.ABOUT/excation.png" alt="EXCATION" fill className="object-cover transition-transform duration-500 group-hover:scale-105" />
                 </div>
                 <div className="flex grow flex-col items-center justify-center p-8 text-center sm:p-10">
                   <h3 className="mb-3 text-xl font-bold tracking-tight text-brand sm:text-2xl">EXCATION</h3>
@@ -171,7 +171,7 @@ export default function AboutPage() {
 
               <FadeIn direction="up" delay={0.4} className="group flex h-full flex-col overflow-hidden rounded-[2.5rem] border-2 border-foreground/10 bg-white shadow-lg transition-all hover:-translate-y-1 hover:shadow-xl">
                 <div className="relative aspect-[4/3] w-full overflow-hidden border-b-2 border-foreground/10">
-                  <Image src="/2.ABOUT/picture.png" alt="지속적인 삶의 방식" fill className="object-cover transition-transform duration-500 group-hover:scale-105" />
+                  <Image src="/2.ABOUT/about_2.png" alt="지속적인 삶의 방식" fill className="object-cover transition-transform duration-500 group-hover:scale-105" />
                 </div>
                 <div className="flex grow flex-col items-center justify-center p-8 text-center sm:p-10">
                   <p className="text-lg font-medium leading-relaxed text-foreground sm:text-xl whitespace-pre-line">
@@ -185,7 +185,7 @@ export default function AboutPage() {
             <div className="grid grid-cols-1">
               <FadeIn direction="up" delay={0.5} className="group flex h-full flex-col overflow-hidden rounded-[2.5rem] border-2 border-foreground/10 bg-white shadow-lg transition-all hover:-translate-y-1 hover:shadow-xl">
                 <div className="relative aspect-[21/9] w-full overflow-hidden border-b-2 border-foreground/10 sm:aspect-[3/1] lg:aspect-[4/1]">
-                  <Image src="/2.ABOUT/about_3.png" alt="지역 탐색과 확장" fill className="object-cover transition-transform duration-500 group-hover:scale-105 hover:object-center" />
+                  <Image src="/2.ABOUT/about_3_v2.png" alt="지역 탐색과 확장" fill className="object-cover transition-transform duration-500 group-hover:scale-105 hover:object-center" />
                 </div>
                 <div className="flex grow flex-col items-center justify-center p-8 text-center sm:p-10">
                   <p className="text-lg font-semibold leading-relaxed text-foreground sm:text-xl">

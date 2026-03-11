@@ -1,16 +1,24 @@
 "use client";
 
 import { useState } from "react";
+import { submitContactForm } from "@/app/actions/contact";
 
 export default function ContactForm() {
   const [agree, setAgree] = useState(false);
   const [submitted, setSubmitted] = useState(false);
 
-  function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+  async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     if (!agree) return;
-    setSubmitted(true);
-    // TODO: API 연동 또는 이메일 전송
+    
+    const formData = new FormData(e.currentTarget);
+    const res = await submitContactForm(formData);
+    
+    if (res.success) {
+      setSubmitted(true);
+    } else {
+      alert(res.error || "문의 접수 중 오류가 발생했습니다.");
+    }
   }
 
   if (submitted) {

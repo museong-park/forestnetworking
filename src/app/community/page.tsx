@@ -1,36 +1,23 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import FadeIn from "@/components/FadeIn";
+import { supabase } from "@/lib/supabase";
 
 export const metadata: Metadata = {
   title: "Community | (주)한국농산어촌네트워크",
   description: "공지사항과 보도자료를 확인하세요.",
 };
 
-type Post = {
-  id: number;
-  type: "공지" | "보도자료";
-  title: string;
-  writer: string;
-  views: string;
-  date: string;
-};
+export default async function CommunityPage() {
+  const { data: posts, error } = await supabase
+    .from("community_posts")
+    .select("id, category, title, user_id, views, created_at, community_comments(count)")
+    .order("created_at", { ascending: false });
 
-// placeholder - 추후 CMS/API 연동 시 교체
-const POSTS: Post[] = [
-  { id: 40, type: "공지", title: "2025 산촌활력 특화사업 성과 보고대회에서 '가평 조항마을'이 우수 산촌마을로 선정되었습니다.", writer: "관리자", views: "17.0 k", date: "21:15" },
-  { id: 39, type: "보도자료", title: "가평 조항마을의 귀촌 체험형 프로그램 '일편단쉼'이 동아일보에 소개되었습니다.", writer: "관리자", views: "14.2 k", date: "21:48" },
-  { id: 38, type: "공지", title: "2024 하반기 신규 사업 프로젝트 참여자 모집 안내", writer: "관리자", views: "15.3 k", date: "2024.12.30" },
-  { id: 37, type: "공지", title: "(주)한국농산어촌네트워크 본사 이전 안내", writer: "관리자", views: "15.7 k", date: "2024.12.28" },
-  { id: 36, type: "공지", title: "동화마을수목원 가을축제 운영 결과 보고서", writer: "관리자", views: "15.4 k", date: "2024.11.20" },
-  { id: 35, type: "보도자료", title: "산림특화 사회적경제 모델, 우수 사례로 언론 보도", writer: "관리자", views: "5043", date: "2024.11.18" },
-  { id: 34, type: "공지", title: "시골언니 프로젝트 3기 참가자 선정 결과 발표", writer: "관리자", views: "10.2 k", date: "2024.11.08" },
-  { id: 33, type: "공지", title: "지역 비즈니스 활성화 포럼 개최 안내", writer: "관리자", views: "16.4 k", date: "2024.10.25" },
-  { id: 32, type: "공지", title: "귀산촌 스타트업 교육 프로그램 상세 일정안내", writer: "관리자", views: "9322", date: "2024.10.05" },
-  { id: 31, type: "보도자료", title: "한국농산어촌네트워크, 탄소중립체험캠페인 성료", writer: "관리자", views: "10.9 k", date: "2024.09.25" },
-];
+  if (error) {
+    console.error("Error fetching community posts:", error);
+  }
 
-export default function CommunityPage() {
   return (
     <main className="min-h-screen bg-background pb-20">
       <section className="px-4 pt-16 pb-8 sm:px-6 sm:pt-24 mt-8">
@@ -49,7 +36,7 @@ export default function CommunityPage() {
           <FadeIn direction="up" delay={0.1}>
             <div className="flex items-center justify-between mb-2 border-b-2 border-foreground/30 pb-4">
               <select className="px-3 py-1.5 border border-border rounded-md text-sm text-muted bg-white cursor-pointer focus:outline-none focus:ring-1 focus:ring-brand">
-                <option value="recent">추천순</option>
+                <option value="recent">최신순</option>
                 <option value="views">조회순</option>
                 <option value="oldest">오래된순</option>
               </select>
@@ -57,12 +44,12 @@ export default function CommunityPage() {
 
             <div className="bg-white">
               <ul className="divide-y divide-border border-b border-border">
-                {POSTS.length === 0 ? (
+                {!posts || posts.length === 0 ? (
                   <li className="px-4 py-16 text-center text-muted">
                     등록된 게시물이 없습니다.
                   </li>
                 ) : (
-                  POSTS.map((item) => (
+                  posts.map((item) => (
                     <li key={item.id} className="group">
                       <Link
                         href={`/community/${item.id}`}
@@ -78,18 +65,23 @@ export default function CommunityPage() {
                         {/* Category */}
                         <div className="text-center">
                           <span className="inline-flex items-center rounded-full bg-stone-100 px-2.5 py-1 text-xs font-medium text-stone-600 sm:px-3">
-                            {item.type}
+                            {item.category === 'notice' ? '공지' : item.category === 'article' ? '보도자료' : '자유'}
                           </span>
                         </div>
 
                         {/* Title */}
                         <div className="truncate pr-4 text-sm font-medium text-foreground sm:text-base">
                           {item.title}
+                          {item.community_comments && item.community_comments[0].count > 0 && (
+                            <span className="ml-2 text-brand text-xs font-semibold">
+                              [{item.community_comments[0].count}]
+                            </span>
+                          )}
                         </div>
 
                         {/* Writer */}
                         <div className="text-center border-l border-border/50 text-xs sm:text-sm text-muted hidden sm:block">
-                          {item.writer}
+                          관리자
                         </div>
 
                         {/* Views */}
@@ -99,7 +91,11 @@ export default function CommunityPage() {
 
                         {/* Date */}
                         <div className="text-center border-l border-border/50 text-xs sm:text-sm text-stone-400">
-                          {item.date}
+                          {new Date(item.created_at).toLocaleDateString('ko-KR', {
+                            year: 'numeric',
+                            month: '2-digit',
+                            day: '2-digit',
+                          }).replace(/\.$/, '')}
                         </div>
                       </Link>
                     </li>

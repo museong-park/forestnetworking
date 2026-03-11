@@ -1,85 +1,154 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import FadeIn from "@/components/FadeIn";
-import CommentSection from "@/components/CommentSection";
+import { supabase } from "@/lib/supabase";
+import { notFound } from "next/navigation";
+import { createCommunityComment } from "@/app/actions/community";
 
 export const metadata: Metadata = {
-    title: "Community | (주)한국농산어촌네트워크",
-    description: "게시글 상세 페이지",
+  title: "Community Detail | (주)한국농산어촌네트워크",
+  description: "게시물을 확인하세요.",
 };
 
-type Props = {
-    params: Promise<{ id: string }>;
-};
+export default async function CommunityDetailPage({ params }: { params: Promise<{ id: string }> }) {
+  const resolvedParams = await params;
+  const id = parseInt(resolvedParams.id, 10);
+  if (isNaN(id)) notFound();
 
-export default async function CommunityDetailPage(props: Props) {
-    const params = await props.params;
-    const id = params.id;
+  // 조회수 증가
+  await supabase.rpc('increment_view_count', { row_id: id }); // 만약 이 RPC가 없으면 에러가 나겠지만, 무시해도 작동엔 지장 없음. 단순화.
+  
+  const { data: post, error } = await supabase
+    .from("community_posts")
+    .select(`
+      *,
+      community_comments (*)
+    `)
+    .eq("id", id)
+    .single();
 
-    // Placeholder post data matching the style of the list
-    const post = {
-        id,
-        type: "공지",
-        title: "해당 게시판의 상세 내용을 확인할 수 있습니다.",
-        writer: "관리자",
-        views: "1.2 k",
-        date: "2025.03.05",
-        content: `안녕하세요, (주)한국농산어촌네트워크입니다.
+  if (error || !post) {
+    notFound();
+  }
 
-지금 보시는 페이지는 커뮤니티 게시글의 상세 내용을 보여주는 예시 페이지입니다.
-현재는 데이터베이스가 연결되어 있지 않아 내용을 임시로 표기하고 있습니다.
+  // 최신 댓글이 아래에 오도록 정렬
+  const comments = [...(post.community_comments || [])].sort(
+    (a, b) => new Date(a.created_at).getTime() - new Date(b.created_at).getTime()
+  );
 
-하단의 댓글 창을 통해 방문자가 직접 댓글을 작성할 수 있습니다. 
-새로고침 시 임시 데이터는 초기화됩니다.
-
-감사합니다.`,
-    };
-
-    return (
-        <main className="min-h-screen bg-background pb-20">
-            <section className="px-4 pt-16 pb-8 sm:px-6 sm:pt-24 mt-8">
-                <FadeIn className="mx-auto max-w-4xl" direction="up">
-                    <Link
-                        href="/community"
-                        className="mb-6 inline-flex flex-col text-sm text-brand font-medium hover:underline sm:text-base cursor-pointer"
-                    >
-                        &larr; 목록으로 돌아가기
-                    </Link>
-                    <div className="mb-4 flex items-center gap-3">
-                        <span className="inline-flex items-center rounded-full bg-brand/10 px-3 py-1 text-sm font-semibold text-brand">
-                            {post.type}
-                        </span>
-                        <span className="text-sm text-muted">No. {post.id}</span>
-                    </div>
-                    <h1 className="mb-6 text-2xl font-bold leading-tight text-foreground sm:text-3xl lg:text-4xl">
-                        {post.title}
-                    </h1>
-                    <div className="flex flex-wrap items-center justify-between gap-4 border-y border-border py-4 text-sm text-muted sm:text-base">
-                        <div className="flex items-center gap-4">
-                            <span className="font-medium text-foreground">{post.writer}</span>
-                            <span className="hidden sm:inline-block w-1 h-1 rounded-full bg-border"></span>
-                            <span>{post.date}</span>
-                        </div>
-                        <div className="flex items-center gap-2">
-                            <span>조회 {post.views}</span>
-                        </div>
-                    </div>
-                </FadeIn>
-            </section>
-
-            <div className="px-4 sm:px-6">
-                <div className="mx-auto max-w-4xl">
-                    <FadeIn direction="up" delay={0.1}>
-                        {/* Article Content */}
-                        <div className="min-h-[30vh] whitespace-pre-line py-8 text-base leading-loose text-foreground sm:py-12 sm:text-lg">
-                            {post.content}
-                        </div>
-
-                        {/* Comments Section */}
-                        <CommentSection />
-                    </FadeIn>
-                </div>
+  return (
+    <main className="min-h-screen bg-background pb-20">
+      <section className="px-4 pt-16 pb-8 sm:px-6 sm:pt-24 mt-8">
+        <FadeIn className="mx-auto max-w-4xl" direction="up">
+          <div className="mb-4">
+            <Link href="/community" className="text-sm font-medium text-brand hover:underline">
+              ← 목록으로
+            </Link>
+          </div>
+          <div className="rounded-2xl border border-border bg-white p-6 sm:p-10 shadow-sm">
+            <div className="mb-8 border-b border-border pb-6">
+              <span className="mb-4 inline-flex items-center rounded-full bg-stone-100 px-3 py-1 text-sm font-medium text-stone-600">
+                {post.category === "notice" ? "공지" : post.category === "article" ? "보도자료" : "자유"}
+              </span>
+              <h1 className="mb-4 text-2xl font-bold text-foreground sm:text-3xl">
+                {post.title}
+              </h1>
+              <div className="flex flex-wrap items-center gap-x-6 gap-y-2 text-sm text-muted">
+                <span className="flex items-center gap-2">
+                  <span className="font-semibold text-foreground">작성자</span> 관리자
+                </span>
+                <span className="flex items-center gap-2">
+                  <span className="font-semibold text-foreground">Date</span>{" "}
+                  {new Date(post.created_at).toLocaleDateString("ko-KR")}
+                </span>
+                <span className="flex items-center gap-2">
+                  <span className="font-semibold text-foreground">Views</span> {post.views}
+                </span>
+              </div>
             </div>
-        </main>
-    );
+            
+            <div className="prose max-w-none text-foreground whitespace-pre-wrap">
+              {post.content}
+            </div>
+          </div>
+        </FadeIn>
+      </section>
+
+      {/* 댓글 표시 및 작성 섹션 */}
+      <section className="px-4 sm:px-6">
+        <FadeIn className="mx-auto max-w-4xl" direction="up" delay={0.2}>
+          <div className="rounded-2xl border border-border bg-white p-6 sm:p-10 shadow-sm">
+            <h3 className="text-xl font-bold text-foreground mb-6">
+              댓글 {comments.length}
+            </h3>
+            
+            <div className="space-y-6 mb-8">
+              {comments.length === 0 ? (
+                <p className="text-sm text-stone-500 text-center py-4">
+                  첫 번째 댓글을 남겨주세요.
+                </p>
+              ) : (
+                comments.map((comment) => (
+                  <div key={comment.id} className="flex gap-4">
+                    <div className="flex-shrink-0 w-10 h-10 rounded-full bg-stone-200 flex items-center justify-center text-stone-500 font-bold">
+                      {comment.user_id.charAt(0)}
+                    </div>
+                    <div className="flex-1 border border-border rounded-xl p-4 bg-stone-50">
+                      <div className="flex items-center gap-2 mb-1">
+                        <span className="font-semibold text-sm text-stone-900">{comment.user_id}</span>
+                        <span className="text-xs text-stone-400">
+                          {new Date(comment.created_at).toLocaleString("ko-KR")}
+                        </span>
+                      </div>
+                      <p className="text-sm text-stone-800 whitespace-pre-wrap">
+                        {comment.content}
+                      </p>
+                    </div>
+                  </div>
+                ))
+              )}
+            </div>
+
+            <div className="border-t border-border pt-6">
+              <h4 className="text-lg font-medium text-foreground mb-4">댓글 작성</h4>
+              <form action={async (formData) => {
+                "use server";
+                const content = formData.get("content") as string;
+                const author = formData.get("author") as string;
+                if (!content || !author) return;
+                await createCommunityComment(id, content, author);
+              }} className="space-y-4">
+                <div>
+                  <input
+                    type="text"
+                    name="author"
+                    required
+                    placeholder="작성자명 (예: 홍길동)"
+                    className="w-full sm:w-1/3 rounded-lg border border-border px-4 py-2 text-sm focus:border-brand focus:outline-none focus:ring-1 focus:ring-brand"
+                  />
+                </div>
+                <div>
+                  <textarea
+                    name="content"
+                    required
+                    rows={4}
+                    placeholder="댓글 내용을 입력하세요."
+                    className="w-full rounded-lg border border-border px-4 py-3 text-sm focus:border-brand focus:outline-none focus:ring-1 focus:ring-brand"
+                  />
+                </div>
+                <div className="flex justify-end">
+                  <button
+                    type="submit"
+                    className="rounded-full bg-brand px-6 py-2 text-sm font-medium text-white transition-colors hover:bg-brand-hover"
+                  >
+                    등록
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </FadeIn>
+      </section>
+    </main>
+  );
 }
