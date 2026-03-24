@@ -24,7 +24,15 @@ export default async function Home() {
             src="/1.MAIN/hero.png"
             alt="자연과 자원"
             fill
-            className="object-cover"
+            className="object-cover md:hidden"
+            priority
+            quality={90}
+          />
+          <Image
+            src="/1.MAIN/hero-2.png"
+            alt="자연과 자원"
+            fill
+            className="hidden object-cover md:block"
             priority
             quality={90}
           />
