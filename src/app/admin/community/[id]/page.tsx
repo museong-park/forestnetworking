@@ -2,6 +2,7 @@ import { supabase } from "@/lib/supabase";
 import { deleteCommunityPost, deleteCommunityComment } from "@/app/actions/community";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import RichTextContent from "@/components/RichTextContent";
 
 export default async function AdminCommunityDetailPage({ params }: { params: Promise<{ id: string }> }) {
   const resolvedParams = await params;
@@ -58,9 +59,7 @@ export default async function AdminCommunityDetailPage({ params }: { params: Pro
           </div>
         </div>
 
-        <div className="prose max-w-none text-stone-800 border-t border-border pt-6 whitespace-pre-wrap">
-          {post.content}
-        </div>
+        <RichTextContent html={post.content} className="border-t border-border pt-6" />
       </div>
 
       <div>

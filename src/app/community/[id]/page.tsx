@@ -4,6 +4,7 @@ import FadeIn from "@/components/FadeIn";
 import { supabase } from "@/lib/supabase";
 import { notFound } from "next/navigation";
 import { createCommunityComment } from "@/app/actions/community";
+import RichTextContent from "@/components/RichTextContent";
 
 export const metadata: Metadata = {
   title: "Community Detail | (주)한국농산어촌네트워크",
@@ -67,9 +68,7 @@ export default async function CommunityDetailPage({ params }: { params: Promise<
               </div>
             </div>
             
-            <div className="prose max-w-none text-foreground whitespace-pre-wrap">
-              {post.content}
-            </div>
+            <RichTextContent html={post.content} />
           </div>
         </FadeIn>
       </section>
