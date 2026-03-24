@@ -16,17 +16,20 @@ export default async function CommunityDetailPage({ params }: { params: Promise<
   const id = parseInt(resolvedParams.id, 10);
   if (isNaN(id)) notFound();
 
-  // 조회수 증가
-  await supabase.rpc('increment_view_count', { row_id: id }); // 만약 이 RPC가 없으면 에러가 나겠지만, 무시해도 작동엔 지장 없음. 단순화.
-  
-  const { data: post, error } = await supabase
-    .from("community_posts")
-    .select(`
-      *,
-      community_comments (*)
-    `)
-    .eq("id", id)
-    .single();
+  // 조회수 증가 및 데이터 조회 병렬 실행
+  const [, postResult] = await Promise.all([
+    supabase.rpc('increment_view_count', { row_id: id }),
+    supabase
+      .from("community_posts")
+      .select(`
+        *,
+        community_comments (*)
+      `)
+      .eq("id", id)
+      .single()
+  ]);
+
+  const { data: post, error } = postResult;
 
   if (error || !post) {
     notFound();
