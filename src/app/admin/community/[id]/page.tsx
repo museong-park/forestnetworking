@@ -37,16 +37,24 @@ export default async function AdminCommunityDetailPage({ params }: { params: Pro
         >
           ← 목록으로
         </Link>
-        <ConfirmButton
-          action={async () => {
-            "use server";
-            await deleteCommunityPost(id);
-          }}
-          confirmMessage="정말 게시물을 삭제하시겠습니까?"
-          className="rounded-md bg-red-500 px-4 py-2 text-sm font-medium text-white hover:bg-red-600 transition-colors"
-        >
-          게시물 삭제
-        </ConfirmButton>
+        <div className="flex items-center gap-3">
+          <Link
+            href={`/admin/community/${id}/edit`}
+            className="rounded-md border border-brand px-4 py-2 text-sm font-medium text-brand hover:bg-brand hover:text-white transition-colors"
+          >
+            게시물 수정
+          </Link>
+          <ConfirmButton
+            action={async () => {
+              "use server";
+              await deleteCommunityPost(id);
+            }}
+            confirmMessage="정말 게시물을 삭제하시겠습니까?"
+            className="rounded-md bg-red-500 px-4 py-2 text-sm font-medium text-white hover:bg-red-600 transition-colors"
+          >
+            게시물 삭제
+          </ConfirmButton>
+        </div>
       </div>
 
       <div className="bg-white rounded-xl shadow-sm border border-border p-6 sm:p-8">

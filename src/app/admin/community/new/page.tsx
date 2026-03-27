@@ -1,5 +1,5 @@
 import Link from "next/link";
-import NewPostForm from "./NewPostForm";
+import PostForm from "../PostForm";
 
 export default function AdminNewPostPage() {
   return (
@@ -15,7 +15,7 @@ export default function AdminNewPostPage() {
       </div>
 
       <div className="bg-white rounded-xl shadow-sm border border-border p-6 sm:p-8">
-        <NewPostForm />
+        <PostForm />
       </div>
     </div>
   );

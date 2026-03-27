@@ -15,7 +15,7 @@ export async function createCommunityPost(formData: FormData) {
       title,
       content,
       category,
-      user_id: "admin", // 어드민이 작성
+      user_id: "관리자", // 어드민이 작성
     })
     .select("id")
     .single();
@@ -29,6 +29,32 @@ export async function createCommunityPost(formData: FormData) {
   revalidatePath("/admin/community");
   redirect(`/admin/community`);
 }
+
+export async function updateCommunityPost(id: number, formData: FormData) {
+  const title = formData.get("title") as string;
+  const content = formData.get("content") as string;
+  const category = formData.get("category") as string;
+
+  const { error } = await supabase
+    .from("community_posts")
+    .update({
+      title,
+      content,
+      category,
+    })
+    .eq("id", id);
+
+  if (error) {
+    console.error("Error updating post", error);
+    return { error: "게시물 수정에 실패했습니다." };
+  }
+
+  revalidatePath("/community");
+  revalidatePath("/admin/community");
+  revalidatePath(`/admin/community/${id}`);
+  redirect(`/admin/community/${id}`);
+}
+
 
 export async function deleteCommunityPost(id: number) {
   const { error } = await supabase.from("community_posts").delete().eq("id", id);
