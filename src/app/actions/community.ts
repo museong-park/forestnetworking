@@ -27,7 +27,7 @@ export async function createCommunityPost(formData: FormData) {
 
   revalidatePath("/community");
   revalidatePath("/admin/community");
-  redirect(`/admin/community`);
+  return { success: true, redirectUrl: "/admin/community" };
 }
 
 export async function updateCommunityPost(id: number, formData: FormData) {
@@ -52,7 +52,7 @@ export async function updateCommunityPost(id: number, formData: FormData) {
   revalidatePath("/community");
   revalidatePath("/admin/community");
   revalidatePath(`/admin/community/${id}`);
-  redirect(`/admin/community/${id}`);
+  return { success: true, redirectUrl: `/admin/community/${id}` };
 }
 
 

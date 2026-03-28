@@ -68,7 +68,12 @@ export default async function AdminCommunityPage() {
                   </td>
                   <td className="px-6 py-4 text-center">{post.views}</td>
                   <td className="px-6 py-4 text-center">
-                    {new Date(post.created_at).toLocaleDateString("ko-KR")}
+                    {new Intl.DateTimeFormat("ko-KR", {
+                      year: "numeric",
+                      month: "2-digit",
+                      day: "2-digit",
+                      timeZone: "Asia/Seoul",
+                    }).format(new Date(post.created_at))}
                   </td>
                   <td className="px-6 py-4 text-center">
                     <Link

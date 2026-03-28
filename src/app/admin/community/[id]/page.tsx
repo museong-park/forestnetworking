@@ -65,7 +65,11 @@ export default async function AdminCommunityDetailPage({ params }: { params: Pro
           <h1 className="text-2xl font-bold text-stone-900 mb-2">{post.title}</h1>
           <div className="flex items-center text-sm text-stone-500 gap-4">
             <span>작성자: {post.user_id}</span>
-            <span>작성일: {new Date(post.created_at).toLocaleString("ko-KR")}</span>
+            <span>작성일: {new Intl.DateTimeFormat("ko-KR", {
+              dateStyle: "long",
+              timeStyle: "short",
+              timeZone: "Asia/Seoul",
+            }).format(new Date(post.created_at))}</span>
             <span>조회수: {post.views}</span>
           </div>
         </div>
@@ -89,7 +93,11 @@ export default async function AdminCommunityDetailPage({ params }: { params: Pro
                   <div className="flex items-center gap-2 mb-2">
                     <span className="font-semibold text-stone-900 text-sm">{comment.user_id}</span>
                     <span className="text-xs text-stone-500">
-                      {new Date(comment.created_at).toLocaleString("ko-KR")}
+                      {new Intl.DateTimeFormat("ko-KR", {
+                        dateStyle: "long",
+                        timeStyle: "short",
+                        timeZone: "Asia/Seoul",
+                      }).format(new Date(comment.created_at))}
                     </span>
                   </div>
                   <p className="text-stone-800 whitespace-pre-wrap">{comment.content}</p>

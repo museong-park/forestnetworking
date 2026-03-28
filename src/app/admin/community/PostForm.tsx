@@ -1,5 +1,6 @@
 "use client";
 
+import { useRouter } from "next/navigation";
 import { useRef, useState } from "react";
 import RichTextEditor from "@/components/RichTextEditor";
 import { createCommunityPost, updateCommunityPost } from "@/app/actions/community";
@@ -14,6 +15,7 @@ interface PostFormProps {
 }
 
 export default function PostForm({ initialData }: PostFormProps) {
+  const router = useRouter();
   const [content, setContent] = useState(initialData?.content || "");
   const [isPending, setIsPending] = useState(false);
   const formRef = useRef<HTMLFormElement>(null);
@@ -37,6 +39,8 @@ export default function PostForm({ initialData }: PostFormProps) {
 
       if (result?.error) {
         alert(result.error);
+      } else if (result?.success && result.redirectUrl) {
+        router.push(result.redirectUrl);
       }
     } catch (error) {
       console.error("Submit error:", error);
