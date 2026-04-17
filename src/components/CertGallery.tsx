@@ -9,8 +9,8 @@ const CERTS = [
   { src: `${CERT_BASE}/cert2.jpg`, alt: "인증서 2" },
   { src: `${CERT_BASE}/cert3.jpg`, alt: "인증서 3" },
   { src: `${CERT_BASE}/cert4.jpg`, alt: "인증서 4" },
-  { src: `${CERT_BASE}/cert5.jpg`, alt: "인증서 5" },
-  { src: `${CERT_BASE}/cert6.jpg`, alt: "인증서 6" },
+  { src: `${CERT_BASE}/cert5-1.jpg`, alt: "인증서 5" },
+  { src: `${CERT_BASE}/cert6-1.jpg`, alt: "인증서 6" },
   { src: `${CERT_BASE}/cert7.jpg`, alt: "인증서 7" },
 ];
 
