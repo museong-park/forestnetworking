@@ -53,27 +53,27 @@ export default async function CommunityPage() {
                     <li key={item.id} className="group">
                       <Link
                         href={`/community/${item.id}`}
-                        className="grid grid-cols-[3rem_auto_1fr_4rem_4rem_4rem] sm:grid-cols-[4rem_5rem_1fr_5rem_5rem_5rem] items-center gap-2 sm:gap-4 px-2 py-4 transition-colors hover:bg-stone-50"
+                        className="grid grid-cols-[2.5rem_auto_1fr_2.5rem_3.5rem] sm:grid-cols-[4rem_5rem_1fr_5rem_5rem_5rem] items-center gap-1 sm:gap-4 px-1 sm:px-2 py-4 transition-colors hover:bg-stone-50"
                       >
                         {/* No */}
                         <div className="flex justify-center">
-                          <span className="flex h-6 w-8 items-center justify-center rounded bg-stone-100 text-xs font-semibold text-stone-500 group-hover:bg-brand/10 group-hover:text-brand">
+                          <span className="flex h-6 w-7 sm:w-8 items-center justify-center rounded bg-stone-100 text-[10px] sm:text-xs font-semibold text-stone-500 group-hover:bg-brand/10 group-hover:text-brand">
                             {item.id}
                           </span>
                         </div>
 
                         {/* Category */}
                         <div className="text-center">
-                          <span className="inline-flex items-center rounded-full bg-stone-100 px-2.5 py-1 text-xs font-medium text-stone-600 sm:px-3">
+                          <span className="inline-flex items-center rounded-full bg-stone-100 px-1.5 py-0.5 text-[10px] sm:text-xs font-medium text-stone-600 sm:px-3 sm:py-1">
                             {item.category === 'notice' ? '공지' : item.category === 'article' ? '보도자료' : '자유'}
                           </span>
                         </div>
 
                         {/* Title */}
-                        <div className="truncate pr-4 text-sm font-medium text-foreground sm:text-base">
+                        <div className="truncate px-2 text-sm font-medium text-foreground sm:text-base sm:pr-4">
                           {item.title}
                           {item.community_comments && item.community_comments[0].count > 0 && (
-                            <span className="ml-2 text-brand text-xs font-semibold">
+                            <span className="ml-1 text-brand text-[10px] sm:text-xs font-semibold sm:ml-2">
                               [{item.community_comments[0].count}]
                             </span>
                           )}
@@ -85,17 +85,25 @@ export default async function CommunityPage() {
                         </div>
 
                         {/* Views */}
-                        <div className="text-center border-l border-border/50 text-xs sm:text-sm text-stone-400">
+                        <div className="text-center border-l border-border/50 text-[10px] sm:text-sm text-stone-400">
                           {item.views}
                         </div>
 
                         {/* Date */}
-                        <div className="text-center border-l border-border/50 text-xs sm:text-sm text-stone-400">
-                          {new Date(item.created_at).toLocaleDateString('ko-KR', {
-                            year: 'numeric',
-                            month: '2-digit',
-                            day: '2-digit',
-                          }).replace(/\.$/, '')}
+                        <div className="text-center border-l border-border/50 text-[10px] sm:text-sm text-stone-400">
+                          <span className="sm:hidden">
+                            {new Date(item.created_at).toLocaleDateString('ko-KR', {
+                              month: '2-digit',
+                              day: '2-digit',
+                            }).replace(/\.$/, '')}
+                          </span>
+                          <span className="hidden sm:inline">
+                            {new Date(item.created_at).toLocaleDateString('ko-KR', {
+                              year: 'numeric',
+                              month: '2-digit',
+                              day: '2-digit',
+                            }).replace(/\.$/, '')}
+                          </span>
                         </div>
                       </Link>
                     </li>
