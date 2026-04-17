@@ -53,57 +53,68 @@ export default async function CommunityPage() {
                     <li key={item.id} className="group">
                       <Link
                         href={`/community/${item.id}`}
-                        className="grid grid-cols-[2.5rem_auto_1fr_2.5rem_3.5rem] sm:grid-cols-[4rem_5rem_1fr_5rem_5rem_5rem] items-center gap-1 sm:gap-4 px-1 sm:px-2 py-4 transition-colors hover:bg-stone-50"
+                        className="flex flex-col gap-2 px-4 py-4 transition-colors hover:bg-stone-50 sm:grid sm:grid-cols-[4rem_5rem_1fr_5rem_5rem_5rem] sm:items-center sm:gap-4 sm:px-2"
                       >
-                        {/* No */}
-                        <div className="flex justify-center">
-                          <span className="flex h-6 w-7 sm:w-8 items-center justify-center rounded bg-stone-100 text-[10px] sm:text-xs font-semibold text-stone-500 group-hover:bg-brand/10 group-hover:text-brand">
+                        {/* Mobile: Category Tag & Header info */}
+                        <div className="flex items-center justify-between sm:hidden">
+                          <span className="inline-flex items-center rounded-full bg-stone-100 px-2 py-0.5 text-[10px] font-medium text-stone-600">
+                            {item.category === 'notice' ? '공지' : item.category === 'article' ? '보도자료' : '자유'}
+                          </span>
+                          <span className="text-[10px] text-stone-400">No. {item.id}</span>
+                        </div>
+
+                        {/* No (Desktop only) */}
+                        <div className="hidden justify-center sm:flex">
+                          <span className="flex h-6 w-8 items-center justify-center rounded bg-stone-100 text-xs font-semibold text-stone-500 group-hover:bg-brand/10 group-hover:text-brand">
                             {item.id}
                           </span>
                         </div>
 
-                        {/* Category */}
-                        <div className="text-center">
-                          <span className="inline-flex items-center rounded-full bg-stone-100 px-1.5 py-0.5 text-[10px] sm:text-xs font-medium text-stone-600 sm:px-3 sm:py-1">
+                        {/* Category (Desktop only) */}
+                        <div className="hidden text-center sm:block">
+                          <span className="inline-flex items-center rounded-full bg-stone-100 px-3 py-1 text-xs font-medium text-stone-600">
                             {item.category === 'notice' ? '공지' : item.category === 'article' ? '보도자료' : '자유'}
                           </span>
                         </div>
 
-                        {/* Title */}
-                        <div className="truncate px-2 text-sm font-medium text-foreground sm:text-base sm:pr-4">
+                        {/* Title (Common but styled differently) */}
+                        <div className="text-sm font-semibold text-foreground sm:truncate sm:px-2 sm:text-base sm:font-medium">
                           {item.title}
                           {item.community_comments && item.community_comments[0].count > 0 && (
-                            <span className="ml-1 text-brand text-[10px] sm:text-xs font-semibold sm:ml-2">
+                            <span className="ml-1 text-brand text-xs font-semibold sm:ml-2 text-[10px] sm:text-xs">
                               [{item.community_comments[0].count}]
                             </span>
                           )}
                         </div>
 
-                        {/* Writer */}
-                        <div className="text-center border-l border-border/50 text-xs sm:text-sm text-muted hidden sm:block">
+                        {/* Mobile: Bottom Metadata (Date, Views) */}
+                        <div className="flex items-center gap-3 text-[11px] text-stone-400 sm:hidden">
+                          <span>{new Date(item.created_at).toLocaleDateString('ko-KR', {
+                                  year: 'numeric',
+                                  month: '2-digit',
+                                  day: '2-digit',
+                                }).replace(/\.$/, '')}</span>
+                          <span className="h-2 w-px bg-stone-200" />
+                          <span>조회 {item.views}</span>
+                        </div>
+
+                        {/* Writer (Desktop only) */}
+                        <div className="hidden text-center border-l border-border/50 text-sm text-stone-400 sm:block">
                           관리자
                         </div>
 
-                        {/* Views */}
-                        <div className="text-center border-l border-border/50 text-[10px] sm:text-sm text-stone-400">
+                        {/* Views (Desktop only) */}
+                        <div className="hidden text-center border-l border-border/50 text-sm text-stone-400 sm:block">
                           {item.views}
                         </div>
 
-                        {/* Date */}
-                        <div className="text-center border-l border-border/50 text-[10px] sm:text-sm text-stone-400">
-                          <span className="sm:hidden">
-                            {new Date(item.created_at).toLocaleDateString('ko-KR', {
-                              month: '2-digit',
-                              day: '2-digit',
-                            }).replace(/\.$/, '')}
-                          </span>
-                          <span className="hidden sm:inline">
-                            {new Date(item.created_at).toLocaleDateString('ko-KR', {
-                              year: 'numeric',
-                              month: '2-digit',
-                              day: '2-digit',
-                            }).replace(/\.$/, '')}
-                          </span>
+                        {/* Date (Desktop only) */}
+                        <div className="hidden text-center border-l border-border/50 text-sm text-stone-400 sm:block">
+                          {new Date(item.created_at).toLocaleDateString('ko-KR', {
+                            year: 'numeric',
+                            month: '2-digit',
+                            day: '2-digit',
+                          }).replace(/\.$/, '')}
                         </div>
                       </Link>
                     </li>
