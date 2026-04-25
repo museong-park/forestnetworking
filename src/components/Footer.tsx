@@ -46,31 +46,31 @@ export default function Footer() {
           {/* Business Info Section */}
           <div className="grid gap-x-8 gap-y-2 text-sm sm:grid-cols-1">
             <div className="flex flex-col gap-1.5 md:flex-row md:items-center">
-              <span className="font-semibold text-stone-900 md:w-28">대표이사</span>
+              <span className="shrink-0 whitespace-nowrap font-semibold text-stone-900 md:w-32">대표이사</span>
               <span className="text-stone-600">김소민</span>
             </div>
             <div className="flex flex-col gap-1.5 md:flex-row md:items-center">
-              <span className="font-semibold text-stone-900 md:w-28">주소</span>
+              <span className="shrink-0 whitespace-nowrap font-semibold text-stone-900 md:w-32">주소</span>
               <span className="text-stone-600">강원 원주시 북원로2738번길 14(태장동)</span>
             </div>
             <div className="flex flex-col gap-1.5 md:flex-row md:items-center">
-              <span className="font-semibold text-stone-900 md:w-28">사업자등록번호</span>
+              <span className="shrink-0 whitespace-nowrap font-semibold text-stone-900 md:w-32">사업자등록번호</span>
               <span className="text-stone-600">576-87-01507</span>
             </div>
             <div className="flex flex-col gap-1.5 md:flex-row md:items-center">
-              <span className="font-semibold text-stone-900 md:w-28">TEL & FAX</span>
+              <span className="shrink-0 whitespace-nowrap font-semibold text-stone-900 md:w-32">TEL & FAX</span>
               <span className="text-stone-600">TEL: 033-733-1983 / FAX: 033-734-1983</span>
             </div>
             <div className="flex flex-col gap-1.5 md:flex-row md:items-center">
-              <span className="font-semibold text-stone-900 md:w-28">이메일</span>
+              <span className="shrink-0 whitespace-nowrap font-semibold text-stone-900 md:w-32">이메일</span>
               <a href="mailto:edu@k-network.org" className="text-brand hover:underline">edu@k-network.org</a>
             </div>
             <div className="flex flex-col gap-1.5 md:flex-row md:items-center">
-              <span className="font-semibold text-stone-900 md:w-28">개인정보관리책임자</span>
+              <span className="shrink-0 whitespace-nowrap font-semibold text-stone-900 md:w-32">개인정보관리책임자</span>
               <span className="text-stone-600">한미희</span>
             </div>
             <div className="flex flex-col gap-1.5 md:flex-row md:items-center">
-              <span className="font-semibold text-stone-900 md:w-28">계좌</span>
+              <span className="shrink-0 whitespace-nowrap font-semibold text-stone-900 md:w-32">계좌</span>
               <span className="text-stone-600">신한 140-014-726645</span>
             </div>
           </div>

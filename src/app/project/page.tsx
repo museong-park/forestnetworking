@@ -177,14 +177,18 @@ export default function ProjectPage() {
           <p className="text-lg font-medium text-white/95 sm:text-xl lg:text-2xl">
             &lsquo;Go농, Go촌&rsquo;을 향해 쉼 없이 나아갑니다.
           </p>
-          <div className="mt-6 flex flex-wrap justify-center gap-x-6 gap-y-1 text-sm text-white/85 sm:text-base lg:text-lg">
-            <span>탐색 경험</span>
-            <span className="text-white/50">·</span>
-            <span>가치 향상</span>
-            <span className="text-white/50">·</span>
-            <span>지속 기반</span>
-            <span className="text-white/50">·</span>
-            <span>자원 재생</span>
+          <div className="mt-6 flex flex-col items-center gap-y-2 sm:flex-row sm:flex-wrap sm:justify-center sm:gap-x-6 sm:gap-y-1 text-sm text-white/85 sm:text-base lg:text-lg">
+            <div className="flex items-center gap-x-4 sm:gap-x-6">
+              <span>탐색 경험</span>
+              <span className="text-white/50">·</span>
+              <span>가치 향상</span>
+            </div>
+            <span className="hidden sm:inline text-white/50">·</span>
+            <div className="flex items-center gap-x-4 sm:gap-x-6">
+              <span>지속 기반</span>
+              <span className="text-white/50">·</span>
+              <span>자원 재생</span>
+            </div>
           </div>
         </FadeIn>
       </section>
