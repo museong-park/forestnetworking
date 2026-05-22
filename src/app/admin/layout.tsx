@@ -37,6 +37,12 @@ export default async function AdminLayout({ children }: { children: ReactNode })
           >
             커뮤니티 관리
           </Link>
+          <Link
+            href="/admin/popups"
+            className="block px-4 py-2 rounded-md text-stone-600 hover:bg-stone-100 hover:text-stone-900"
+          >
+            팝업 관리
+          </Link>
         </nav>
         <form action={logoutAdmin}>
           <button className="w-full text-left px-4 py-2 text-sm text-red-600 hover:bg-red-50 rounded-md">

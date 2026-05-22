@@ -2,6 +2,7 @@ import Link from "next/link";
 import Image from "next/image";
 import ContactForm from "@/components/ContactForm";
 import FadeIn from "@/components/FadeIn";
+import PopupBanner from "@/components/PopupBanner";
 import { supabase } from "@/lib/supabase";
 
 export default async function Home() {
@@ -15,8 +16,21 @@ export default async function Home() {
     console.error("Error fetching recent posts:", error);
   }
 
+  const { data: activePopups, error: popupsError } = await supabase
+    .from("popups")
+    .select("id, title, image_url, link_url")
+    .eq("is_active", true)
+    .order("sort_order", { ascending: true })
+    .order("created_at", { ascending: false });
+
+  if (popupsError) {
+    console.error("Error fetching popups:", popupsError);
+  }
+
   return (
     <main className="bg-background">
+      <PopupBanner popups={activePopups || []} />
+      
       {/* 1. Hero Section */}
       <section className="relative flex min-h-[85vh] flex-col items-center justify-center overflow-hidden px-4 py-24 text-center">
         <div className="absolute inset-0">
