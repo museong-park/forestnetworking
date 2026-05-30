@@ -98,7 +98,7 @@ export default function PopupBanner({ popups }: PopupBannerProps) {
 
   return (
     <div 
-      className="fixed left-4 top-24 z-50 w-72 sm:w-80 sm:left-8 sm:top-32 shadow-2xl rounded-lg overflow-hidden bg-white border border-stone-200"
+      className="fixed left-4 top-24 z-50 w-80 sm:w-96 max-w-[calc(100vw-2rem)] sm:left-8 sm:top-32 shadow-2xl rounded-lg overflow-hidden bg-white border border-stone-200"
       onMouseEnter={() => setIsPaused(true)}
       onMouseLeave={() => setIsPaused(false)}
     >

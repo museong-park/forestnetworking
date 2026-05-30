@@ -3,8 +3,9 @@ import { notFound } from "next/navigation";
 import { getPopup } from "@/app/actions/popups";
 import PopupForm from "../PopupForm";
 
-export default async function AdminEditPopupPage({ params }: { params: { id: string } }) {
-  const popup = await getPopup(parseInt(params.id));
+export default async function AdminEditPopupPage({ params }: { params: Promise<{ id: string }> }) {
+  const resolvedParams = await params;
+  const popup = await getPopup(parseInt(resolvedParams.id));
 
   if (!popup) {
     notFound();
